@@ -10,7 +10,6 @@
     --bg: #f4f2ee;
     --panel: #ffffff;
     --border: #d0ccc4;
-    --border-strong: #9b9690;
     --accent: #1a4a6b;
     --accent-light: #e8f0f7;
     --accent2: #c8401a;
@@ -21,542 +20,184 @@
     --green-bg: #e8f7ee;
     --warn: #8b5e00;
     --warn-bg: #fff8e6;
+    --on-color: #2d6a1f;
+    --on-bg: #edf7ea;
+    --off-color: #1a4a6b;
+    --off-bg: #e8f0f7;
+    --med-color: #7b2d8b;
+    --med-bg: #f5eaf8;
     --mono: 'IBM Plex Mono', monospace;
     --sans: 'IBM Plex Sans', sans-serif;
     --radius: 4px;
-    --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+    --shadow: 0 1px 3px rgba(0,0,0,0.08);
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--sans); background: var(--bg); color: var(--text); font-size: 14px; line-height: 1.5; min-height: 100vh; }
 
-  body {
-    font-family: var(--sans);
-    background: var(--bg);
-    color: var(--text);
-    font-size: 14px;
-    line-height: 1.5;
-    min-height: 100vh;
-  }
+  header { background: var(--accent); color: white; padding: 16px 28px; display: flex; align-items: center; justify-content: space-between; gap: 16px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+  header h1 { font-size: 15px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+  header p { font-size: 11px; opacity: 0.7; font-family: var(--mono); margin-top: 2px; }
+  .header-actions { display: flex; gap: 8px; }
+  .btn { font-family: var(--sans); font-size: 13px; font-weight: 500; padding: 7px 15px; border-radius: var(--radius); border: none; cursor: pointer; transition: all 0.15s; display: inline-flex; align-items: center; gap: 5px; }
+  .btn-primary { background: white; color: var(--accent); }
+  .btn-primary:hover { background: #ddeaf5; }
+  .btn-ghost { background: rgba(255,255,255,0.13); color: white; border: 1px solid rgba(255,255,255,0.25); }
+  .btn-ghost:hover { background: rgba(255,255,255,0.22); }
 
-  /* ── Header ── */
-  header {
-    background: var(--accent);
-    color: white;
-    padding: 18px 32px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  }
-  header .title-block h1 {
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-  }
-  header .title-block p {
-    font-size: 11px;
-    opacity: 0.7;
-    font-family: var(--mono);
-    margin-top: 2px;
-  }
-  header .header-actions {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-  }
-  .btn {
-    font-family: var(--sans);
-    font-size: 13px;
-    font-weight: 500;
-    padding: 7px 16px;
-    border-radius: var(--radius);
-    border: none;
-    cursor: pointer;
-    transition: all 0.15s;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .btn-primary {
-    background: white;
-    color: var(--accent);
-  }
-  .btn-primary:hover { background: #e8f0f7; }
-  .btn-ghost {
-    background: rgba(255,255,255,0.12);
-    color: white;
-    border: 1px solid rgba(255,255,255,0.25);
-  }
-  .btn-ghost:hover { background: rgba(255,255,255,0.2); }
-  .btn-danger {
-    background: var(--accent2);
-    color: white;
-  }
-  .btn-danger:hover { background: #a83516; }
-
-  /* ── Progress nav ── */
-  .progress-nav {
-    background: white;
-    border-bottom: 1px solid var(--border);
-    padding: 0 32px;
-    display: flex;
-    gap: 0;
-    overflow-x: auto;
-  }
-  .nav-tab {
-    font-size: 12px;
-    font-weight: 500;
-    padding: 12px 18px;
-    color: var(--text-dim);
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-    white-space: nowrap;
-    transition: all 0.15s;
-    font-family: var(--mono);
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
+  .progress-nav { background: white; border-bottom: 2px solid var(--border); padding: 0 28px; display: flex; overflow-x: auto; gap: 0; }
+  .nav-tab { font-size: 11px; font-weight: 600; padding: 11px 14px; color: var(--text-muted); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; white-space: nowrap; transition: all 0.15s; font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.03em; display: flex; align-items: center; gap: 6px; }
   .nav-tab:hover { color: var(--accent); }
   .nav-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
-  .nav-tab .tab-dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--border);
-    display: inline-block;
-    transition: background 0.2s;
-  }
-  .nav-tab.complete .tab-dot { background: var(--green); }
-  .nav-tab.active .tab-dot { background: var(--accent); }
+  .tab-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--border); flex-shrink: 0; }
+  .nav-tab.off-tab.active { color: var(--off-color); border-bottom-color: var(--off-color); }
+  .nav-tab.off-tab.active .tab-dot { background: var(--off-color); }
+  .nav-tab.on-tab.active { color: var(--on-color); border-bottom-color: var(--on-color); }
+  .nav-tab.on-tab.active .tab-dot { background: var(--on-color); }
+  .nav-tab.med-tab.active { color: var(--med-color); border-bottom-color: var(--med-color); }
+  .nav-tab.med-tab.active .tab-dot { background: var(--med-color); }
 
-  /* ── Layout ── */
-  .app-body {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 32px 24px 80px;
-  }
-
-  /* ── Sections (pages) ── */
+  .app-body { max-width: 980px; margin: 0 auto; padding: 28px 20px 80px; }
   .section { display: none; }
   .section.active { display: block; }
 
-  /* ── Card ── */
-  .card {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    box-shadow: var(--shadow);
-    margin-bottom: 20px;
-    overflow: hidden;
-  }
-  .card-header {
-    background: var(--accent);
-    color: white;
-    padding: 10px 18px;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    font-family: var(--mono);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .card-header.secondary {
-    background: #e8edf2;
-    color: var(--accent);
-  }
-  .card-header.warn { background: var(--warn-bg); color: var(--warn); border-bottom: 1px solid #f0dca0; }
-  .card-body { padding: 18px; }
+  .phase-banner { display: flex; align-items: center; gap: 12px; padding: 10px 16px; border-radius: 5px; margin-bottom: 18px; font-size: 12px; font-weight: 600; font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.05em; }
+  .phase-banner.off { background: var(--off-bg); color: var(--off-color); border: 1px solid #b8d0e8; }
+  .phase-banner.on { background: var(--on-bg); color: var(--on-color); border: 1px solid #b0d8a8; }
+  .phase-banner.med { background: var(--med-bg); color: var(--med-color); border: 1px solid #d8b0e8; }
 
-  /* ── Form elements ── */
-  .form-row {
-    display: grid;
-    gap: 14px;
-    margin-bottom: 14px;
-  }
+  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 6px; box-shadow: var(--shadow); margin-bottom: 16px; overflow: hidden; }
+  .card-header { padding: 9px 16px; font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; font-family: var(--mono); display: flex; justify-content: space-between; align-items: center; }
+  .card-header.blue { background: var(--accent); color: white; }
+  .card-header.off { background: var(--off-bg); color: var(--off-color); border-bottom: 1px solid #b8d0e8; }
+  .card-header.on { background: var(--on-bg); color: var(--on-color); border-bottom: 1px solid #b0d8a8; }
+  .card-header.med { background: var(--med-bg); color: var(--med-color); border-bottom: 1px solid #d8b0e8; }
+  .card-header.neutral { background: #f2f0ec; color: var(--text-dim); border-bottom: 1px solid var(--border); }
+  .card-body { padding: 16px; }
+
+  .form-row { display: grid; gap: 12px; margin-bottom: 12px; }
   .form-row.cols-2 { grid-template-columns: 1fr 1fr; }
   .form-row.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
   .form-row.cols-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
-  .form-row.cols-auto { grid-template-columns: auto 1fr; align-items: center; }
-
   .field { display: flex; flex-direction: column; gap: 4px; }
-  .field label {
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--text-dim);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    font-family: var(--mono);
-  }
-  .field input, .field textarea, .field select {
-    font-family: var(--sans);
-    font-size: 13.5px;
-    color: var(--text);
-    background: #fafaf9;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 7px 10px;
-    transition: border-color 0.15s, box-shadow 0.15s;
-    width: 100%;
-  }
-  .field input:focus, .field textarea:focus, .field select:focus {
-    outline: none;
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px rgba(26,74,107,0.08);
-    background: white;
-  }
-  .field textarea { resize: vertical; min-height: 60px; }
+  .field label { font-size: 10.5px; font-weight: 600; color: var(--text-dim); letter-spacing: 0.04em; text-transform: uppercase; font-family: var(--mono); }
+  .field input, .field textarea, .field select { font-family: var(--sans); font-size: 13px; color: var(--text); background: #fafaf9; border: 1px solid var(--border); border-radius: var(--radius); padding: 6px 9px; transition: border-color 0.15s; width: 100%; }
+  .field input:focus, .field textarea:focus, .field select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(26,74,107,0.07); background: white; }
+  .field textarea { resize: vertical; min-height: 56px; }
 
-  /* ── Checkbox list ── */
-  .checklist { display: flex; flex-direction: column; gap: 6px; }
-  .check-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 7px 10px;
-    border-radius: var(--radius);
-    border: 1px solid transparent;
-    cursor: pointer;
-    transition: all 0.12s;
-  }
+  .checklist { display: flex; flex-direction: column; gap: 5px; }
+  .check-item { display: flex; align-items: flex-start; gap: 9px; padding: 6px 9px; border-radius: var(--radius); border: 1px solid transparent; cursor: pointer; transition: all 0.12s; }
   .check-item:hover { background: var(--accent-light); border-color: var(--border); }
-  .check-item input[type=checkbox] {
-    width: 16px; height: 16px;
-    accent-color: var(--accent);
-    cursor: pointer;
-    flex-shrink: 0;
-  }
-  .check-item span { font-size: 13.5px; line-height: 1.4; }
+  .check-item input[type=checkbox] { width: 15px; height: 15px; accent-color: var(--accent); cursor: pointer; flex-shrink: 0; margin-top: 2px; }
+  .check-item span { font-size: 13px; line-height: 1.4; }
   .check-item.checked { background: var(--green-bg); border-color: #a8d8bc; }
   .check-item.checked span { color: var(--green); }
 
-  /* ── Consent row ── */
-  .consent-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 10px;
-    background: #fafaf9;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    margin-bottom: 8px;
-  }
-  .consent-label { flex: 1; font-size: 13.5px; }
+  .consent-row { display: flex; align-items: center; gap: 10px; padding: 8px 10px; background: #fafaf9; border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 7px; }
+  .consent-label { flex: 1; font-size: 13px; }
   .yn-group { display: flex; gap: 4px; }
-  .yn-btn {
-    font-size: 12px;
-    font-weight: 600;
-    padding: 4px 12px;
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    cursor: pointer;
-    background: white;
-    color: var(--text-dim);
-    font-family: var(--mono);
-    transition: all 0.12s;
-  }
+  .yn-btn { font-size: 12px; font-weight: 600; padding: 3px 11px; border-radius: var(--radius); border: 1px solid var(--border); cursor: pointer; background: white; color: var(--text-dim); font-family: var(--mono); transition: all 0.12s; }
   .yn-btn.active-y { background: var(--green-bg); border-color: #a8d8bc; color: var(--green); }
   .yn-btn.active-n { background: #fde8e4; border-color: #f4b8ae; color: var(--accent2); }
 
-  /* ── Medication table ── */
-  .med-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-  .med-table th {
-    background: var(--accent-light);
-    color: var(--accent);
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    font-family: var(--mono);
-    padding: 7px 10px;
-    text-align: left;
-    border-bottom: 1px solid var(--border);
-  }
-  .med-table td {
-    border-bottom: 1px solid var(--border);
-    padding: 4px;
-  }
+  .med-table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  .med-table th { background: var(--accent-light); color: var(--accent); font-size: 10.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; font-family: var(--mono); padding: 6px 9px; text-align: left; border-bottom: 1px solid var(--border); }
+  .med-table td { border-bottom: 1px solid var(--border); padding: 3px; }
   .med-table tr:last-child td { border-bottom: none; }
-  .med-table input {
-    font-family: var(--sans);
-    font-size: 13px;
-    border: 1px solid transparent;
-    background: transparent;
-    padding: 5px 7px;
-    width: 100%;
-    border-radius: 3px;
-    transition: all 0.12s;
-  }
-  .med-table input:focus {
-    outline: none;
-    background: white;
-    border-color: var(--accent);
-  }
+  .med-table input { font-family: var(--sans); font-size: 12.5px; border: 1px solid transparent; background: transparent; padding: 4px 7px; width: 100%; border-radius: 3px; }
+  .med-table input:focus { outline: none; background: white; border-color: var(--accent); }
   .med-table tr:nth-child(even) { background: #fafaf9; }
 
-  /* ── BP Table ── */
   .bp-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-  .bp-table th {
-    font-size: 11px; font-weight: 600;
-    color: var(--text-dim);
-    font-family: var(--mono);
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    padding: 6px 10px;
-    border-bottom: 1px solid var(--border);
-    text-align: left;
-  }
-  .bp-table td { padding: 4px 6px; border-bottom: 1px solid var(--border); }
+  .bp-table th { font-size: 10.5px; font-weight: 600; color: var(--text-dim); font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.04em; padding: 6px 9px; border-bottom: 1px solid var(--border); text-align: left; }
+  .bp-table td { padding: 3px 5px; border-bottom: 1px solid var(--border); }
   .bp-table tr:last-child td { border-bottom: none; }
-  .bp-table input {
-    font-family: var(--mono);
-    font-size: 13px;
-    border: 1px solid var(--border);
-    border-radius: 3px;
-    padding: 5px 8px;
-    width: 100%;
-    background: #fafaf9;
-    transition: all 0.12s;
-  }
+  .bp-table input { font-family: var(--mono); font-size: 13px; border: 1px solid var(--border); border-radius: 3px; padding: 4px 7px; width: 100%; background: #fafaf9; }
   .bp-table input:focus { outline: none; border-color: var(--accent); background: white; }
-  .bp-table .avg-row { background: var(--accent-light); font-weight: 600; }
+  .bp-table .avg-row { background: var(--accent-light); }
   .bp-table .avg-row input { background: var(--accent-light); font-weight: 600; }
-  .bp-table .discard-row { opacity: 0.6; }
+  .bp-table .discard-row { opacity: 0.55; }
+  .row-label { font-size: 11.5px; font-family: var(--mono); color: var(--text-dim); white-space: nowrap; padding: 0 8px !important; }
 
-  /* ── Giladi table ── */
   .giladi-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-  .giladi-table th {
-    font-size: 11px; font-weight: 600;
-    color: var(--text-dim);
-    font-family: var(--mono);
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-    padding: 7px 10px;
-    border-bottom: 1px solid var(--border);
-    background: #f7f5f2;
-    text-align: left;
-  }
-  .giladi-table td {
-    padding: 5px 6px;
-    border-bottom: 1px solid var(--border);
-    vertical-align: middle;
-  }
+  .giladi-table th { font-size: 10.5px; font-weight: 600; color: var(--text-dim); font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.03em; padding: 6px 9px; border-bottom: 1px solid var(--border); background: #f7f5f2; text-align: left; }
+  .giladi-table td { padding: 4px 5px; border-bottom: 1px solid var(--border); vertical-align: middle; }
   .giladi-table tr:last-child td { border-bottom: none; }
-  .giladi-table input[type=number], .giladi-table input[type=text] {
-    font-family: var(--mono);
-    font-size: 13px;
-    border: 1px solid var(--border);
-    border-radius: 3px;
-    padding: 4px 7px;
-    width: 100%;
-    background: #fafaf9;
-    transition: all 0.12s;
-    text-align: center;
-  }
+  .giladi-table input[type=number], .giladi-table input[type=text] { font-family: var(--mono); font-size: 13px; border: 1px solid var(--border); border-radius: 3px; padding: 4px 6px; width: 100%; background: #fafaf9; text-align: center; }
   .giladi-table input:focus { outline: none; border-color: var(--accent); background: white; }
-  .trial-label { font-weight: 500; color: var(--text-dim); font-family: var(--mono); font-size: 12px; }
-  .total-row { background: #f0e8ff; font-weight: 600; }
-  .total-row input { background: #f0e8ff; font-weight: 600; text-align: center; }
+  .trial-label { font-weight: 500; color: var(--text); font-size: 13px; padding-left: 8px !important; }
+  .giladi-table input[readonly] { background: #ede8f7; color: #5a3a7a; font-weight: 600; }
+  .turns-note { font-size: 10.5px; color: var(--text-muted); display: block; font-family: var(--mono); }
 
-  /* ── VR trials table ── */
   .vr-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-  .vr-table th {
-    font-size: 11px; font-weight: 600;
-    font-family: var(--mono);
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-    padding: 7px 10px;
-    border-bottom: 2px solid var(--border);
-    background: var(--accent);
-    color: white;
-    text-align: left;
-  }
-  .vr-table td {
-    padding: 5px 7px;
-    border-bottom: 1px solid var(--border);
-    vertical-align: middle;
-  }
-  .vr-table tr:nth-child(even) { background: #fafaf9; }
-  .vr-table tr:last-child td { border-bottom: none; }
-  .vr-table input[type=text], .vr-table input[type=number], .vr-table select {
-    font-family: var(--mono);
-    font-size: 13px;
-    border: 1px solid var(--border);
-    border-radius: 3px;
-    padding: 4px 7px;
-    width: 100%;
-    background: white;
-    transition: all 0.12s;
-  }
-  .vr-table input:focus, .vr-table select:focus { outline: none; border-color: var(--accent); }
-  .vr-table .trial-num {
-    font-family: var(--mono);
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--accent);
-    text-align: center;
-    width: 40px;
-  }
+  .vr-table th { font-size: 10.5px; font-weight: 600; font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.03em; padding: 7px 9px; border-bottom: 2px solid var(--border); background: var(--accent); color: white; text-align: left; }
+  .vr-table td { padding: 4px 6px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+  .vr-table input[type=text], .vr-table input[type=number] { font-family: var(--mono); font-size: 12.5px; border: 1px solid var(--border); border-radius: 3px; padding: 4px 6px; width: 100%; background: white; }
+  .vr-table input:focus { outline: none; border-color: var(--accent); }
+  .trial-num { font-family: var(--mono); font-size: 13px; font-weight: 600; color: var(--accent); text-align: center; width: 36px; }
   .baseline-row { background: #fff8e6 !important; }
-  .section-divider-row td {
-    background: var(--accent-light);
-    color: var(--accent);
-    font-size: 11px;
-    font-family: var(--mono);
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    padding: 5px 10px;
-    border-top: 1px solid var(--border);
-  }
+  .vr-divider td { background: var(--accent-light); color: var(--accent); font-size: 10.5px; font-family: var(--mono); font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; padding: 5px 9px; border-top: 1px solid #b8d0e8; }
+  .walk-row td { background: #f7f7f5 !important; }
+  .walk-row input { background: #f7f7f5 !important; font-size: 12px !important; color: var(--text-dim) !important; }
 
-  /* ── Data offload ── */
-  .offload-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
-    margin-top: 4px;
-  }
-  .offload-item {
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 8px;
-    background: #fafaf9;
-  }
-  .offload-item label {
-    font-size: 11px;
-    font-weight: 600;
-    font-family: var(--mono);
-    color: var(--text-dim);
-    text-transform: uppercase;
-    display: block;
-    margin-bottom: 5px;
-    letter-spacing: 0.03em;
-  }
-  .offload-check {
-    display: flex; align-items: center; gap: 5px; font-size: 12px; color: var(--text-dim); cursor: pointer;
-  }
+  .q-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
+  .q-item { display: flex; align-items: center; gap: 6px; font-size: 12.5px; font-family: var(--mono); cursor: pointer; padding: 4px 10px; border: 1px solid var(--border); border-radius: var(--radius); background: white; transition: all 0.12s; }
+  .q-item:hover { background: var(--accent-light); }
+  .q-item input { accent-color: var(--accent); width: 14px; height: 14px; }
+  .q-item.checked { background: var(--green-bg); border-color: #a8d8bc; color: var(--green); }
+
+  .offload-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; }
+  .offload-item { border: 1px solid var(--border); border-radius: var(--radius); padding: 8px 10px; background: #fafaf9; }
+  .offload-item label { font-size: 10.5px; font-weight: 600; font-family: var(--mono); color: var(--text-dim); text-transform: uppercase; display: block; margin-bottom: 4px; }
+  .offload-check { display: flex; align-items: center; gap: 5px; font-size: 12px; color: var(--text-dim); cursor: pointer; }
   .offload-check input { accent-color: var(--green); }
 
-  /* ── Upload table ── */
   .upload-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-  .upload-table th {
-    font-size: 11px; font-weight: 600; font-family: var(--mono);
-    text-transform: uppercase; letter-spacing: 0.03em;
-    padding: 7px 10px; border-bottom: 1px solid var(--border);
-    background: #f7f5f2; text-align: left; color: var(--text-dim);
-  }
-  .upload-table td { padding: 5px 8px; border-bottom: 1px solid var(--border); }
-  .upload-table input[type=date], .upload-table input[type=text] {
-    font-family: var(--mono); font-size: 12px;
-    border: 1px solid var(--border); border-radius: 3px;
-    padding: 4px 7px; width: 100%; background: white;
-  }
+  .upload-table th { font-size: 10.5px; font-weight: 600; font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.03em; padding: 6px 9px; border-bottom: 1px solid var(--border); background: #f7f5f2; text-align: left; color: var(--text-dim); }
+  .upload-table td { padding: 4px 7px; border-bottom: 1px solid var(--border); }
+  .upload-table input { font-family: var(--mono); font-size: 12px; border: 1px solid var(--border); border-radius: 3px; padding: 4px 7px; width: 100%; background: white; }
   .upload-table input:focus { outline: none; border-color: var(--accent); }
 
-  /* ── Info box ── */
-  .info-box {
-    background: var(--warn-bg);
-    border: 1px solid #f0dca0;
-    border-radius: var(--radius);
-    padding: 10px 14px;
-    font-size: 12.5px;
-    color: var(--warn);
-    line-height: 1.6;
-    margin-bottom: 14px;
-  }
-  .info-box strong { font-weight: 600; }
+  .assess-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .assess-table th { font-size: 10.5px; font-weight: 600; font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.03em; padding: 6px 9px; border-bottom: 1px solid var(--border); background: #f7f5f2; text-align: left; color: var(--text-dim); }
+  .assess-table td { padding: 5px 7px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+  .assess-table tr:last-child td { border-bottom: none; }
+  .assess-table .notes-input { border: 1px solid var(--border); border-radius: 3px; padding: 4px 7px; width: 100%; font-family: var(--sans); font-size: 12.5px; }
+  .assess-table .notes-input:focus { outline: none; border-color: var(--accent); }
+  .done-check { accent-color: var(--green); width: 16px; height: 16px; }
 
-  /* ── Section nav buttons ── */
-  .section-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 24px;
-    padding-top: 16px;
-    border-top: 1px solid var(--border);
-  }
-  .btn-nav {
-    font-family: var(--sans);
-    font-size: 13px;
-    font-weight: 500;
-    padding: 9px 20px;
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    cursor: pointer;
-    background: white;
-    color: var(--text);
-    transition: all 0.15s;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
+  .info-box { background: var(--warn-bg); border: 1px solid #f0dca0; border-radius: var(--radius); padding: 9px 13px; font-size: 12.5px; color: var(--warn); line-height: 1.6; margin-bottom: 12px; }
+
+  .timer-block { background: var(--med-bg); border: 1px solid #d8b0e8; border-radius: 6px; padding: 14px 16px; margin-bottom: 16px; display: flex; align-items: center; gap: 14px; }
+  .timer-block .timer-icon { font-size: 22px; }
+  .timer-block h3 { font-size: 13px; font-weight: 600; color: var(--med-color); font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.04em; }
+  .timer-block p { font-size: 12.5px; color: var(--med-color); opacity: 0.85; margin-top: 2px; }
+
+  .section-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--border); }
+  .btn-nav { font-family: var(--sans); font-size: 13px; font-weight: 500; padding: 8px 18px; border-radius: var(--radius); border: 1px solid var(--border); cursor: pointer; background: white; color: var(--text); transition: all 0.15s; display: inline-flex; align-items: center; gap: 6px; }
   .btn-nav:hover { background: var(--accent-light); border-color: var(--accent); color: var(--accent); }
-  .btn-nav.next {
-    background: var(--accent);
-    color: white;
-    border-color: var(--accent);
-  }
-  .btn-nav.next:hover { background: #15395a; }
+  .btn-nav.next { background: var(--accent); color: white; border-color: var(--accent); }
+  .btn-nav.next:hover { background: #153c58; }
 
-  /* ── Divider ── */
-  .divider { height: 1px; background: var(--border); margin: 16px 0; }
-  .section-title {
-    font-size: 11px;
-    font-weight: 600;
-    font-family: var(--mono);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--text-muted);
-    margin-bottom: 10px;
-    margin-top: 4px;
-  }
+  .divider { height: 1px; background: var(--border); margin: 14px 0; }
+  .section-label { font-size: 10.5px; font-weight: 600; font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: 8px; }
 
-  /* ── Responsive ── */
-  @media (max-width: 640px) {
-    .form-row.cols-2, .form-row.cols-3, .form-row.cols-4 { grid-template-columns: 1fr; }
-    header { flex-direction: column; align-items: flex-start; padding: 14px 18px; }
-    .app-body { padding: 16px 12px 60px; }
-    .offload-grid { grid-template-columns: repeat(2, 1fr); }
-    .progress-nav { padding: 0 16px; }
-  }
-
-  /* ── Toast ── */
-  .toast {
-    position: fixed;
-    bottom: 24px;
-    left: 50%;
-    transform: translateX(-50%) translateY(20px);
-    background: var(--accent);
-    color: white;
-    padding: 10px 20px;
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: 500;
-    opacity: 0;
-    transition: all 0.3s;
-    pointer-events: none;
-    z-index: 999;
-    white-space: nowrap;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-  }
+  .toast { position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%) translateY(16px); background: var(--accent); color: white; padding: 9px 18px; border-radius: 5px; font-size: 13px; font-weight: 500; opacity: 0; transition: all 0.3s; pointer-events: none; z-index: 999; white-space: nowrap; box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  @media (max-width: 660px) {
+    .form-row.cols-2, .form-row.cols-3, .form-row.cols-4 { grid-template-columns: 1fr; }
+    .offload-grid { grid-template-columns: repeat(2,1fr); }
+    header { flex-direction: column; align-items: flex-start; padding: 12px 16px; }
+    .app-body { padding: 14px 10px 60px; }
+  }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="title-block">
+  <div>
     <h1>PD / HRV Trial Run Sheet</h1>
-    <p id="header-info">New session — fill in participant ID to begin</p>
+    <p id="header-info">New session — enter Participant ID to begin</p>
   </div>
   <div class="header-actions">
     <button class="btn btn-ghost" onclick="clearAll()">⟲ Clear</button>
@@ -565,1203 +206,682 @@
 </header>
 
 <nav class="progress-nav">
-  <div class="nav-tab active" onclick="goTo(0)" id="tab-0"><span class="tab-dot"></span>Prep & Scheduling</div>
+  <div class="nav-tab active" onclick="goTo(0)" id="tab-0"><span class="tab-dot"></span>Prep</div>
   <div class="nav-tab" onclick="goTo(1)" id="tab-1"><span class="tab-dot"></span>Screening</div>
-  <div class="nav-tab" onclick="goTo(2)" id="tab-2"><span class="tab-dot"></span>Session Setup</div>
-  <div class="nav-tab" onclick="goTo(3)" id="tab-3"><span class="tab-dot"></span>Test-OFF</div>
-  <div class="nav-tab" onclick="goTo(4)" id="tab-4"><span class="tab-dot"></span>Giladi Protocol</div>
-  <div class="nav-tab" onclick="goTo(5)" id="tab-5"><span class="tab-dot"></span>Test-ON / VR</div>
-  <div class="nav-tab" onclick="goTo(6)" id="tab-6"><span class="tab-dot"></span>Data Management</div>
+  <div class="nav-tab off-tab" onclick="goTo(2)" id="tab-2"><span class="tab-dot"></span>Test-OFF</div>
+  <div class="nav-tab off-tab" onclick="goTo(3)" id="tab-3"><span class="tab-dot"></span>Giladi OFF</div>
+  <div class="nav-tab off-tab" onclick="goTo(4)" id="tab-4"><span class="tab-dot"></span>VR Trials OFF</div>
+  <div class="nav-tab med-tab" onclick="goTo(5)" id="tab-5"><span class="tab-dot"></span>Med Intake</div>
+  <div class="nav-tab on-tab" onclick="goTo(6)" id="tab-6"><span class="tab-dot"></span>Test-ON</div>
+  <div class="nav-tab on-tab" onclick="goTo(7)" id="tab-7"><span class="tab-dot"></span>Giladi ON</div>
+  <div class="nav-tab on-tab" onclick="goTo(8)" id="tab-8"><span class="tab-dot"></span>VR Trials ON</div>
+  <div class="nav-tab" onclick="goTo(9)" id="tab-9"><span class="tab-dot"></span>Data Mgmt</div>
 </nav>
 
 <div class="app-body">
 
-  <!-- ─────────────── SECTION 0: Prep & Scheduling ─────────────── -->
-  <div class="section active" id="sec-0">
-    <div class="card">
-      <div class="card-header">Session Identification</div>
-      <div class="card-body">
-        <div class="form-row cols-3">
-          <div class="field">
-            <label>Participant ID</label>
-            <input type="text" id="participant_id" placeholder="e.g. PD-001" oninput="updateHeader()">
-          </div>
-          <div class="field">
-            <label>Test Session / Trial #</label>
-            <input type="text" id="test_session" placeholder="e.g. Session 1">
-          </div>
-          <div class="field">
-            <label>Test Visit Date & Time</label>
-            <input type="datetime-local" id="visit_datetime">
-          </div>
-        </div>
-        <div class="form-row cols-2">
-          <div class="field">
-            <label>RC Initials</label>
-            <input type="text" id="rc_initials" placeholder="Initials">
-          </div>
-          <div class="field">
-            <label>Recruitment Date</label>
-            <input type="date" id="recruitment_date">
-          </div>
-        </div>
+<!-- ══ 0: PREP ══ -->
+<div class="section active" id="sec-0">
+  <div class="card">
+    <div class="card-header blue">Session Identification</div>
+    <div class="card-body">
+      <div class="form-row cols-3">
+        <div class="field"><label>Participant ID</label><input type="text" id="participant_id" oninput="updateHeader()" placeholder="e.g. PD-001"></div>
+        <div class="field"><label>Test Session / Trial #</label><input type="text" id="test_session" placeholder="Session 1"></div>
+        <div class="field"><label>Visit Date & Time</label><input type="datetime-local" id="visit_datetime" oninput="updateHeader()"></div>
       </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header secondary">Scheduling Checklist</div>
-      <div class="card-body">
-        <div class="checklist" id="scheduling-checks">
-          <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Reminder call 1 day prior to visit</span></label>
-          <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Participant informed to attend OFF but bring meds</span></label>
-          <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Comfortable / loose clothing advised</span></label>
-          <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Digital Consent Form sent (Qualtrics)</span></label>
-        </div>
+      <div class="form-row cols-3">
+        <div class="field"><label>RC Initials</label><input type="text" id="rc_initials" placeholder="Initials"></div>
+        <div class="field"><label>Recruitment Date</label><input type="date" id="recruitment_date"></div>
+        <div class="field"><label>Forms Reviewed — Initials</label><input type="text" id="forms_reviewed_initials" placeholder="Initials"></div>
       </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header secondary">Visit Preparation</div>
-      <div class="card-body">
-        <div class="form-row cols-2">
-          <div class="field">
-            <label>Phone Screening Date</label>
-            <input type="date" id="phone_screening_date">
-          </div>
-          <div class="field">
-            <label>Email Informed Consent (ICL) Sent?</label>
-            <select id="icl_sent">
-              <option value="">—</option>
-              <option>Yes</option>
-              <option>No</option>
-            </select>
-          </div>
-        </div>
-        <div class="checklist" style="margin-top:8px">
-          <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Calendar / Room Reservations made</span></label>
-          <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Paperwork prepared: ICL, Video Recording Consent, UPDRS score sheets, Questionnaire package/URL</span></label>
-        </div>
-        <div style="margin-top:12px">
-          <div class="field">
-            <label>Forms Reviewed & Complete — Initials</label>
-            <input type="text" id="forms_reviewed_initials" placeholder="Initials">
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="section-footer">
-      <div></div>
-      <button class="btn-nav next" onclick="goTo(1)">Screening →</button>
     </div>
   </div>
-
-  <!-- ─────────────── SECTION 1: Screening ─────────────── -->
-  <div class="section" id="sec-1">
-    <div class="card">
-      <div class="card-header">Screening Protocol</div>
-      <div class="card-body">
-        <div class="form-row cols-4">
-          <div class="field" style="grid-column:span 2">
-            <label>RC Initials (Screening)</label>
-            <input type="text" id="screening_rc_initials" placeholder="Initials">
-          </div>
-          <div class="field">
-            <label>Eligible</label>
-            <select id="eligible">
-              <option value="">—</option>
-              <option>Yes</option>
-              <option>No</option>
-            </select>
-          </div>
-          <div class="field">
-            <label>Freezer?</label>
-            <select id="freezer">
-              <option value="">—</option>
-              <option>Yes</option>
-              <option>No</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="field">
-            <label>Reason for Screen-Fail (if ineligible)</label>
-            <textarea id="screen_fail_reason" placeholder="Leave blank if eligible"></textarea>
-          </div>
-        </div>
-        <div class="info-box">
-          <strong>Exclusion Criteria:</strong> DBS, discomfort with VR participation, medical implant (pacemaker, etc.), uncorrected auditory or visual impairment or balance disorder, neurological impairment, unable to walk for 30 min total unassisted, inner ear infection / fatigue / stress / cold / flu, pregnant, unable to go OFF medications for at least 12–24h.
-        </div>
+  <div class="card">
+    <div class="card-header neutral">Scheduling & Before Visit</div>
+    <div class="card-body">
+      <div class="form-row cols-2" style="margin-bottom:12px">
+        <div class="field"><label>Phone Screening Date</label><input type="date" id="phone_screening_date"></div>
+        <div class="field"><label>ICL Emailed</label><select id="icl_sent"><option value="">—</option><option>Yes</option><option>No</option></select></div>
       </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header secondary">Consent</div>
-      <div class="card-body">
-        <div class="consent-row">
-          <span class="consent-label">Consent Form</span>
-          <div class="yn-group">
-            <button class="yn-btn" onclick="setYN(this,'consent_form','Y')">Y</button>
-            <button class="yn-btn" onclick="setYN(this,'consent_form','N')">N</button>
-          </div>
-          <input type="hidden" id="consent_form" value="">
-        </div>
-        <div class="consent-row">
-          <span class="consent-label">Media Consent</span>
-          <div class="yn-group">
-            <button class="yn-btn" onclick="setYN(this,'media_consent','Y')">Y</button>
-            <button class="yn-btn" onclick="setYN(this,'media_consent','N')">N</button>
-          </div>
-          <input type="hidden" id="media_consent" value="">
-        </div>
-        <div class="consent-row">
-          <span class="consent-label">Future Studies / Database (UW-PD)</span>
-          <div class="yn-group">
-            <button class="yn-btn" onclick="setYN(this,'future_studies','Y')">Y</button>
-            <button class="yn-btn" onclick="setYN(this,'future_studies','N')">N</button>
-          </div>
-          <input type="hidden" id="future_studies" value="">
-        </div>
+      <div class="checklist">
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Reminder call 1 day prior to visit</span></label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Participant informed — attend OFF but bring meds</span></label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Comfortable / loose clothing advised</span></label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Digital Consent Form sent (Qualtrics)</span></label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Calendar / Room reservations confirmed</span></label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Paperwork prepared: ICL, Video Recording Consent, UPDRS score sheets, Questionnaire package/URL</span></label>
       </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header secondary">Anthropometrics & Medical History</div>
-      <div class="card-body">
-        <div class="form-row cols-4">
-          <div class="field">
-            <label>Height (cm)</label>
-            <input type="number" id="height_cm" placeholder="cm">
-          </div>
-          <div class="field">
-            <label>Weight (lb)</label>
-            <input type="number" id="weight_lb" placeholder="lb">
-          </div>
-          <div class="field">
-            <label>Date of Symptom Onset (~YYYY-MM)</label>
-            <input type="text" id="symptom_onset" placeholder="YYYY-MM">
-          </div>
-          <div class="field">
-            <label>Date of Formal Diagnosis</label>
-            <input type="date" id="formal_diagnosis_date">
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="field">
-            <label>Other Medical History</label>
-            <textarea id="other_medical_hx" rows="3" placeholder="Enter relevant medical history..."></textarea>
-          </div>
-        </div>
-        <div class="form-row cols-3">
-          <div class="field">
-            <label>Fall Events</label>
-            <select id="fall_events">
-              <option value="">—</option>
-              <option>No falls</option>
-              <option>Actual falls</option>
-              <option>Incidental falls</option>
-            </select>
-          </div>
-          <div class="field">
-            <label>Actual Falls #</label>
-            <input type="number" id="actual_falls" placeholder="0">
-          </div>
-          <div class="field">
-            <label>Incidental Falls #</label>
-            <input type="number" id="incidental_falls" placeholder="0">
-          </div>
-        </div>
-        <div class="form-row cols-2">
-          <div class="field">
-            <label>Fall Events Reported By (RC Initials)</label>
-            <input type="text" id="fall_reported_initials" placeholder="Initials">
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header secondary">Medications</div>
-      <div class="card-body">
-        <table class="med-table">
-          <thead>
-            <tr>
-              <th>Medication Name</th>
-              <th>Dose (unit)</th>
-              <th>Frequency</th>
-              <th>Med. Name</th>
-              <th>Dose</th>
-              <th>Frequency</th>
-            </tr>
-          </thead>
-          <tbody id="med-tbody">
-            <tr>
-              <td><input type="text" id="med1_name" placeholder="Med name"></td>
-              <td><input type="text" id="med1_dose" placeholder="Dose"></td>
-              <td><input type="text" id="med1_freq" placeholder="Freq"></td>
-              <td><input type="text" id="med1_name2" placeholder="Med name"></td>
-              <td><input type="text" id="med1_dose2" placeholder="Dose"></td>
-              <td><input type="text" id="med1_freq2" placeholder="Freq"></td>
-            </tr>
-            <tr>
-              <td><input type="text" id="med2_name" placeholder="Med name"></td>
-              <td><input type="text" id="med2_dose" placeholder="Dose"></td>
-              <td><input type="text" id="med2_freq" placeholder="Freq"></td>
-              <td><input type="text" id="med2_name2" placeholder="Med name"></td>
-              <td><input type="text" id="med2_dose2" placeholder="Dose"></td>
-              <td><input type="text" id="med2_freq2" placeholder="Freq"></td>
-            </tr>
-            <tr>
-              <td><input type="text" id="med3_name" placeholder="Med name"></td>
-              <td><input type="text" id="med3_dose" placeholder="Dose"></td>
-              <td><input type="text" id="med3_freq" placeholder="Freq"></td>
-              <td><input type="text" id="med3_name2" placeholder="Med name"></td>
-              <td><input type="text" id="med3_dose2" placeholder="Dose"></td>
-              <td><input type="text" id="med3_freq2" placeholder="Freq"></td>
-            </tr>
-            <tr>
-              <td><input type="text" id="med4_name" placeholder="Med name"></td>
-              <td><input type="text" id="med4_dose" placeholder="Dose"></td>
-              <td><input type="text" id="med4_freq" placeholder="Freq"></td>
-              <td><input type="text" id="med4_name2" placeholder="Med name"></td>
-              <td><input type="text" id="med4_dose2" placeholder="Dose"></td>
-              <td><input type="text" id="med4_freq2" placeholder="Freq"></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="section-footer">
-      <button class="btn-nav" onclick="goTo(0)">← Prep</button>
-      <button class="btn-nav next" onclick="goTo(2)">Session Setup →</button>
     </div>
   </div>
-
-  <!-- ─────────────── SECTION 2: Session Setup ─────────────── -->
-  <div class="section" id="sec-2">
-    <div class="card">
-      <div class="card-header">Equipment & Setup</div>
-      <div class="card-body">
-        <div class="checklist">
-          <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"><span>ECG Setup (Equivital)</span></label>
-          <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"><span>OPALS – APDM connected</span></label>
-          <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"><span>VR opened and calibrated</span></label>
-          <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"><span>PKMAS on and Subject ID made</span></label>
-          <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Video Camera view confirmed</span></label>
-        </div>
+  <div class="card">
+    <div class="card-header neutral">Equipment & Setup</div>
+    <div class="card-body">
+      <div class="checklist">
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"><span>ECG Setup (Equivital)</span></label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"><span>OPALS – APDM connected</span></label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"><span>VR opened and calibrated</span></label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"><span>PKMAS on and Subject ID created</span></label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Video Camera view confirmed</span></label>
       </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header secondary">Subject Preparation</div>
-      <div class="card-body">
-        <div class="form-row cols-3">
-          <div class="field">
-            <label>RC Initials</label>
-            <input type="text" id="subj_prep_initials" placeholder="Initials">
-          </div>
-          <div class="field">
-            <label>Time Since Last Dose</label>
-            <input type="text" id="time_since_dose" placeholder="e.g. 14h">
-          </div>
-          <div class="field">
-            <label>Equivital Size</label>
-            <input type="text" id="equivital_size" placeholder="e.g. M">
-          </div>
-        </div>
-        <div class="checklist" style="margin-top:8px">
-          <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"><span>OPAL Sensor orientation — USB Face Down</span></label>
-          <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"><span>All sensors flashing green</span></label>
-          <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Water/snacks available for participant</span></label>
-        </div>
-      </div>
-    </div>
-
-    <div class="section-footer">
-      <button class="btn-nav" onclick="goTo(1)">← Screening</button>
-      <button class="btn-nav next" onclick="goTo(3)">Test-OFF →</button>
     </div>
   </div>
-
-  <!-- ─────────────── SECTION 3: Test-OFF ─────────────── -->
-  <div class="section" id="sec-3">
-    <div class="card">
-      <div class="card-header">UPDRS (OFF State)</div>
-      <div class="card-body">
-        <div class="form-row cols-3">
-          <div class="field">
-            <label>UPDRS-III Score (OFF)</label>
-            <input type="number" id="updrs_off_score" placeholder="Score">
-          </div>
-          <div class="field">
-            <label>UPDRS-III Time</label>
-            <input type="time" id="updrs_off_time">
-          </div>
-          <div class="field">
-            <label>Assessor Initials</label>
-            <input type="text" id="updrs_off_initials" placeholder="Initials">
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header secondary">Blood Pressure – OFF State</div>
-      <div class="card-body">
-        <table class="bp-table">
-          <thead>
-            <tr><th>Reading</th><th>Systolic (mmHg)</th><th>Diastolic (mmHg)</th><th>Heart Rate</th><th>Notes</th></tr>
-          </thead>
-          <tbody>
-            <tr class="discard-row">
-              <td style="font-size:12px;color:var(--text-muted);font-family:var(--mono)">Reading 1 (discard)</td>
-              <td><input type="number" id="bp_off_1_sys" placeholder="—"></td>
-              <td><input type="number" id="bp_off_1_dia" placeholder="—"></td>
-              <td><input type="number" id="bp_off_1_hr" placeholder="—"></td>
-              <td><input type="text" id="bp_off_1_notes" placeholder=""></td>
-            </tr>
-            <tr>
-              <td style="font-size:12px;font-family:var(--mono)">Reading 2</td>
-              <td><input type="number" id="bp_off_2_sys" placeholder="" oninput="calcBP('off')"></td>
-              <td><input type="number" id="bp_off_2_dia" placeholder="" oninput="calcBP('off')"></td>
-              <td><input type="number" id="bp_off_2_hr" placeholder=""></td>
-              <td><input type="text" id="bp_off_2_notes"></td>
-            </tr>
-            <tr>
-              <td style="font-size:12px;font-family:var(--mono)">Reading 3</td>
-              <td><input type="number" id="bp_off_3_sys" placeholder="" oninput="calcBP('off')"></td>
-              <td><input type="number" id="bp_off_3_dia" placeholder="" oninput="calcBP('off')"></td>
-              <td><input type="number" id="bp_off_3_hr" placeholder=""></td>
-              <td><input type="text" id="bp_off_3_notes"></td>
-            </tr>
-            <tr class="avg-row">
-              <td style="font-size:12px;font-weight:600;font-family:var(--mono)">Average (2 & 3)</td>
-              <td><input type="text" id="bp_off_avg_sys" placeholder="Auto" readonly></td>
-              <td><input type="text" id="bp_off_avg_dia" placeholder="Auto" readonly></td>
-              <td><input type="text" id="bp_off_avg_hr" placeholder=""></td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header secondary">Baseline Assessments — Outside VR</div>
-      <div class="card-body">
-        <p style="font-size:12.5px;color:var(--text-dim);margin-bottom:12px">Provide instructions about the importance of remaining quiet. Note any adverse events (talking, sneezing, moving).</p>
-        <table class="giladi-table">
-          <thead><tr><th>Assessment</th><th>Completed</th><th>Notes</th></tr></thead>
-          <tbody>
-            <tr>
-              <td>5-minute quiet SITTING (backrest + arm rests) <span style="color:var(--accent2);font-weight:600">★ BLOOD PRESSURE</span></td>
-              <td style="width:90px"><input type="checkbox" style="accent-color:var(--green);width:16px;height:16px" id="baseline_off_sitting"></td>
-              <td><input type="text" id="baseline_off_sitting_notes" placeholder="Notes"></td>
-            </tr>
-            <tr>
-              <td>5-minute quiet STANDING</td>
-              <td><input type="checkbox" style="accent-color:var(--green);width:16px;height:16px" id="baseline_off_standing"></td>
-              <td><input type="text" id="baseline_off_standing_notes" placeholder="Notes"></td>
-            </tr>
-            <tr>
-              <td>5-minute quiet WALKING</td>
-              <td><input type="checkbox" style="accent-color:var(--green);width:16px;height:16px" id="baseline_off_walking"></td>
-              <td><input type="text" id="baseline_off_walking_notes" placeholder="Notes"></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="section-footer">
-      <button class="btn-nav" onclick="goTo(2)">← Session Setup</button>
-      <button class="btn-nav next" onclick="goTo(4)">Giladi Protocol →</button>
-    </div>
-  </div>
-
-  <!-- ─────────────── SECTION 4: Giladi Protocol ─────────────── -->
-  <div class="section" id="sec-4">
-
-    <div class="info-box">
-      <strong>Scoring Reference —</strong>
-      <strong>Duration of FOG:</strong> 0=No freezing; 1=Mild (&lt;10%); 2=Moderate (&gt;10% and &lt;50%); 3=Severe (&gt;50%); 4=Unable/assistance<br>
-      <strong>Frequency of FOG:</strong> 0=No freezing; 1=1 brief episode (&lt;1s); 2=Many brief OR 1 long (&gt;2s); 3=Many long episodes; 4=Unable<br>
-      <em>If trial exceeds 60s due to FOG, grade 4 (Unable). If participant fails instructions, repeat at end and document.</em>
-    </div>
-
-    <!-- OFF Giladi -->
-    <div class="card">
-      <div class="card-header">Giladi Protocol — OFF</div>
-      <div class="card-body">
-        <div class="form-row cols-4">
-          <div class="field">
-            <label>Doorway Size</label>
-            <input type="text" id="giladi_off_doorway" placeholder="cm or in">
-          </div>
-          <div class="field">
-            <label>Assessor Initials</label>
-            <input type="text" id="giladi_off_initials" placeholder="">
-          </div>
-          <div class="field">
-            <label>Start Time</label>
-            <input type="time" id="giladi_off_start">
-          </div>
-          <div class="field">
-            <label>Walking Aid Used?</label>
-            <select id="giladi_off_walking_aid">
-              <option value="">—</option>
-              <option>No</option>
-              <option>Yes — Cane</option>
-              <option>Yes — Walker</option>
-              <option>Yes — Other</option>
-            </select>
-          </div>
-        </div>
-        <table class="giladi-table" style="margin-top:8px">
-          <thead>
-            <tr>
-              <th>Trial</th>
-              <th>Duration of FOG (0–4)</th>
-              <th>Frequency of FOG (0–4)</th>
-              <th>Total</th>
-              <th>Confidence (0–4)</th>
-              <th>Notes</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="trial-label">1. Walk</td>
-              <td><input type="number" min="0" max="4" id="g_off_1_dur"></td>
-              <td><input type="number" min="0" max="4" id="g_off_1_freq" oninput="calcGiladi('off',1)"></td>
-              <td><input type="text" id="g_off_1_total" readonly></td>
-              <td><input type="number" min="0" max="4" id="g_off_1_conf"></td>
-              <td><input type="text" id="g_off_1_notes"></td>
-            </tr>
-            <tr>
-              <td class="trial-label">2. Dual-Task Walk</td>
-              <td><input type="number" min="0" max="4" id="g_off_2_dur" oninput="calcGiladi('off',2)"></td>
-              <td><input type="number" min="0" max="4" id="g_off_2_freq" oninput="calcGiladi('off',2)"></td>
-              <td><input type="text" id="g_off_2_total" readonly></td>
-              <td><input type="number" min="0" max="4" id="g_off_2_conf"></td>
-              <td><input type="text" id="g_off_2_notes"></td>
-            </tr>
-            <tr>
-              <td class="trial-label">3. Carrying</td>
-              <td><input type="number" min="0" max="4" id="g_off_3_dur" oninput="calcGiladi('off',3)"></td>
-              <td><input type="number" min="0" max="4" id="g_off_3_freq" oninput="calcGiladi('off',3)"></td>
-              <td><input type="text" id="g_off_3_total" readonly></td>
-              <td><input type="number" min="0" max="4" id="g_off_3_conf"></td>
-              <td><input type="text" id="g_off_3_notes"></td>
-            </tr>
-            <tr>
-              <td class="trial-label">4. Turns <span style="font-size:11px;color:var(--text-muted)"># Turns (1/4):</span></td>
-              <td><input type="number" min="0" max="4" id="g_off_4_dur" oninput="calcGiladi('off',4)"></td>
-              <td><input type="number" min="0" max="4" id="g_off_4_freq" oninput="calcGiladi('off',4)"></td>
-              <td><input type="text" id="g_off_4_total" readonly></td>
-              <td><input type="number" min="0" max="4" id="g_off_4_conf"></td>
-              <td><input type="text" id="g_off_4_notes"></td>
-            </tr>
-            <tr>
-              <td class="trial-label">5. Dual-Task Turns <span style="font-size:11px;color:var(--text-muted)"># Turns (1/4):</span></td>
-              <td><input type="number" min="0" max="4" id="g_off_5_dur" oninput="calcGiladi('off',5)"></td>
-              <td><input type="number" min="0" max="4" id="g_off_5_freq" oninput="calcGiladi('off',5)"></td>
-              <td><input type="text" id="g_off_5_total" readonly></td>
-              <td><input type="number" min="0" max="4" id="g_off_5_conf"></td>
-              <td><input type="text" id="g_off_5_notes"></td>
-            </tr>
-            <tr>
-              <td class="trial-label">6. Box Shuffle</td>
-              <td><input type="number" min="0" max="4" id="g_off_6_dur" oninput="calcGiladi('off',6)"></td>
-              <td><input type="number" min="0" max="4" id="g_off_6_freq" oninput="calcGiladi('off',6)"></td>
-              <td><input type="text" id="g_off_6_total" readonly></td>
-              <td><input type="number" min="0" max="4" id="g_off_6_conf"></td>
-              <td><input type="text" id="g_off_6_notes"></td>
-            </tr>
-            <tr>
-              <td class="trial-label">7. Box Agility</td>
-              <td><input type="number" min="0" max="4" id="g_off_7_dur" oninput="calcGiladi('off',7)"></td>
-              <td><input type="number" min="0" max="4" id="g_off_7_freq" oninput="calcGiladi('off',7)"></td>
-              <td><input type="text" id="g_off_7_total" readonly></td>
-              <td><input type="number" min="0" max="4" id="g_off_7_conf"></td>
-              <td><input type="text" id="g_off_7_notes"></td>
-            </tr>
-            <tr>
-              <td class="trial-label">8. Doorway</td>
-              <td><input type="number" min="0" max="4" id="g_off_8_dur" oninput="calcGiladi('off',8)"></td>
-              <td><input type="number" min="0" max="4" id="g_off_8_freq" oninput="calcGiladi('off',8)"></td>
-              <td><input type="text" id="g_off_8_total" readonly></td>
-              <td><input type="number" min="0" max="4" id="g_off_8_conf"></td>
-              <td><input type="text" id="g_off_8_notes"></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="section-footer">
-      <button class="btn-nav" onclick="goTo(3)">← Test-OFF</button>
-      <button class="btn-nav next" onclick="goTo(5)">Test-ON / VR →</button>
-    </div>
-  </div>
-
-  <!-- ─────────────── SECTION 5: Test-ON / VR ─────────────── -->
-  <div class="section" id="sec-5">
-
-    <div class="card">
-      <div class="card-header">UPDRS (ON State)</div>
-      <div class="card-body">
-        <div class="form-row cols-3">
-          <div class="field">
-            <label>UPDRS-III Score (ON)</label>
-            <input type="number" id="updrs_on_score" placeholder="Score">
-          </div>
-          <div class="field">
-            <label>UPDRS-III Time (ON)</label>
-            <input type="time" id="updrs_on_time">
-          </div>
-          <div class="field">
-            <label>Assessor Initials</label>
-            <input type="text" id="updrs_on_initials" placeholder="Initials">
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header secondary">Blood Pressure — ON State</div>
-      <div class="card-body">
-        <table class="bp-table">
-          <thead>
-            <tr><th>Reading</th><th>Systolic</th><th>Diastolic</th><th>HR</th><th>Notes</th></tr>
-          </thead>
-          <tbody>
-            <tr class="discard-row">
-              <td style="font-size:12px;color:var(--text-muted);font-family:var(--mono)">Reading 1 (discard)</td>
-              <td><input type="number" id="bp_on_1_sys"></td>
-              <td><input type="number" id="bp_on_1_dia"></td>
-              <td><input type="number" id="bp_on_1_hr"></td>
-              <td><input type="text" id="bp_on_1_notes"></td>
-            </tr>
-            <tr>
-              <td style="font-size:12px;font-family:var(--mono)">Reading 2</td>
-              <td><input type="number" id="bp_on_2_sys" oninput="calcBP('on')"></td>
-              <td><input type="number" id="bp_on_2_dia" oninput="calcBP('on')"></td>
-              <td><input type="number" id="bp_on_2_hr"></td>
-              <td><input type="text" id="bp_on_2_notes"></td>
-            </tr>
-            <tr>
-              <td style="font-size:12px;font-family:var(--mono)">Reading 3</td>
-              <td><input type="number" id="bp_on_3_sys" oninput="calcBP('on')"></td>
-              <td><input type="number" id="bp_on_3_dia" oninput="calcBP('on')"></td>
-              <td><input type="number" id="bp_on_3_hr"></td>
-              <td><input type="text" id="bp_on_3_notes"></td>
-            </tr>
-            <tr class="avg-row">
-              <td style="font-size:12px;font-weight:600;font-family:var(--mono)">Average (2 & 3)</td>
-              <td><input type="text" id="bp_on_avg_sys" readonly></td>
-              <td><input type="text" id="bp_on_avg_dia" readonly></td>
-              <td><input type="text" id="bp_on_avg_hr"></td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header secondary">Baseline Assessments — Inside VR</div>
-      <div class="card-body">
-        <table class="giladi-table">
-          <thead><tr><th>Assessment</th><th>Done</th><th>Notes</th></tr></thead>
-          <tbody>
-            <tr>
-              <td>2-minute quiet SITTING (chair with backrest + arm rests)</td>
-              <td><input type="checkbox" style="accent-color:var(--green);width:16px;height:16px" id="vr_baseline_sitting"></td>
-              <td><input type="text" id="vr_baseline_sitting_notes" placeholder="Notes"></td>
-            </tr>
-            <tr>
-              <td>2-minute quiet STANDING</td>
-              <td><input type="checkbox" style="accent-color:var(--green);width:16px;height:16px" id="vr_baseline_standing"></td>
-              <td><input type="text" id="vr_baseline_standing_notes" placeholder="Notes"></td>
-            </tr>
-            <tr>
-              <td>2-minute quiet WALKING</td>
-              <td><input type="checkbox" style="accent-color:var(--green);width:16px;height:16px" id="vr_baseline_walking"></td>
-              <td><input type="text" id="vr_baseline_walking_notes" placeholder="Notes"></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header">ON Walking Assessment — VR Trials</div>
-      <div class="card-body">
-        <div class="form-row cols-2" style="margin-bottom:12px">
-          <div class="field">
-            <label>Test State Label</label>
-            <input type="text" id="test_on_label" placeholder="e.g. 1st ON, 2nd ON">
-          </div>
-        </div>
-        <div class="info-box" style="margin-bottom:12px">★ Minimum 3 good trials required. Questionnaires: STAI-State-4, SSQ after session.</div>
-        <table class="vr-table">
-          <thead>
-            <tr>
-              <th style="width:45px">#</th>
-              <th>Trial Code</th>
-              <th>Condition</th>
-              <th>SAM Rating</th>
-              <th>Elevated/Ground & Time</th>
-              <th>Comments</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="baseline-row">
-              <td class="trial-num">B</td>
-              <td><input type="text" id="vr_b_code" placeholder="Baseline"></td>
-              <td><input type="text" id="vr_b_cond" placeholder=""></td>
-              <td><input type="text" id="vr_b_sam" style="width:60px"></td>
-              <td><input type="text" id="vr_b_elev"></td>
-              <td><input type="text" id="vr_b_comments"></td>
-            </tr>
-            <tr class="section-divider-row"><td colspan="6">— Trials 1–5 (Elevated/Ground Time: <input type="time" id="vr_time_1" style="font-size:11px;border:1px solid var(--border);border-radius:3px;padding:2px 5px;font-family:var(--mono)">) —</td></tr>
-            <tr>
-              <td class="trial-num">1</td>
-              <td><input type="text" id="vr_1_code" placeholder="1:30s stand"></td>
-              <td><input type="text" id="vr_1_cond"></td>
-              <td><input type="text" id="vr_1_sam" style="width:60px"></td>
-              <td><input type="text" id="vr_1_elev" placeholder="E/G"></td>
-              <td><input type="text" id="vr_1_comments"></td>
-            </tr>
-            <tr>
-              <td class="trial-num" style="color:var(--text-muted);font-size:11px"></td>
-              <td colspan="5"><input type="text" id="vr_1_walk" placeholder="1: walk — notes" style="border:1px solid var(--border);border-radius:3px;padding:4px 7px;width:100%;font-size:12px;background:#fafaf9"></td>
-            </tr>
-            <tr>
-              <td class="trial-num">2</td>
-              <td><input type="text" id="vr_2_code" placeholder="2:30s stand"></td>
-              <td><input type="text" id="vr_2_cond"></td>
-              <td><input type="text" id="vr_2_sam" style="width:60px"></td>
-              <td><input type="text" id="vr_2_elev"></td>
-              <td><input type="text" id="vr_2_comments"></td>
-            </tr>
-            <tr>
-              <td class="trial-num" style="color:var(--text-muted);font-size:11px"></td>
-              <td colspan="5"><input type="text" id="vr_2_walk" placeholder="2: walk — notes" style="border:1px solid var(--border);border-radius:3px;padding:4px 7px;width:100%;font-size:12px;background:#fafaf9"></td>
-            </tr>
-            <tr>
-              <td class="trial-num">3</td>
-              <td><input type="text" id="vr_3_code" placeholder="3:30s stand"></td>
-              <td><input type="text" id="vr_3_cond"></td>
-              <td><input type="text" id="vr_3_sam" style="width:60px"></td>
-              <td><input type="text" id="vr_3_elev"></td>
-              <td><input type="text" id="vr_3_comments"></td>
-            </tr>
-            <tr>
-              <td class="trial-num" style="color:var(--text-muted);font-size:11px"></td>
-              <td colspan="5"><input type="text" id="vr_3_walk" placeholder="3: walk — notes" style="border:1px solid var(--border);border-radius:3px;padding:4px 7px;width:100%;font-size:12px;background:#fafaf9"></td>
-            </tr>
-            <tr>
-              <td class="trial-num">4</td>
-              <td><input type="text" id="vr_4_code" placeholder="4:30s stand"></td>
-              <td><input type="text" id="vr_4_cond"></td>
-              <td><input type="text" id="vr_4_sam" style="width:60px"></td>
-              <td><input type="text" id="vr_4_elev"></td>
-              <td><input type="text" id="vr_4_comments"></td>
-            </tr>
-            <tr>
-              <td class="trial-num" style="color:var(--text-muted);font-size:11px"></td>
-              <td colspan="5"><input type="text" id="vr_4_walk" placeholder="4: walk — notes" style="border:1px solid var(--border);border-radius:3px;padding:4px 7px;width:100%;font-size:12px;background:#fafaf9"></td>
-            </tr>
-            <tr>
-              <td class="trial-num">5</td>
-              <td><input type="text" id="vr_5_code" placeholder="5:30s stand"></td>
-              <td><input type="text" id="vr_5_cond"></td>
-              <td><input type="text" id="vr_5_sam" style="width:60px"></td>
-              <td><input type="text" id="vr_5_elev"></td>
-              <td><input type="text" id="vr_5_comments"></td>
-            </tr>
-            <tr>
-              <td class="trial-num" style="color:var(--text-muted);font-size:11px"></td>
-              <td colspan="5"><input type="text" id="vr_5_walk" placeholder="5: walk — notes" style="border:1px solid var(--border);border-radius:3px;padding:4px 7px;width:100%;font-size:12px;background:#fafaf9"></td>
-            </tr>
-            <tr class="section-divider-row"><td colspan="6">— Trials 6–10 (Elevated/Ground Time: <input type="time" id="vr_time_2" style="font-size:11px;border:1px solid var(--border);border-radius:3px;padding:2px 5px;font-family:var(--mono)">) —</td></tr>
-            <tr>
-              <td class="trial-num">6</td>
-              <td><input type="text" id="vr_6_code" placeholder="6:30s stand"></td>
-              <td><input type="text" id="vr_6_cond"></td>
-              <td><input type="text" id="vr_6_sam" style="width:60px"></td>
-              <td><input type="text" id="vr_6_elev"></td>
-              <td><input type="text" id="vr_6_comments"></td>
-            </tr>
-            <tr>
-              <td class="trial-num" style="color:var(--text-muted);font-size:11px"></td>
-              <td colspan="5"><input type="text" id="vr_6_walk" placeholder="6: walk — notes" style="border:1px solid var(--border);border-radius:3px;padding:4px 7px;width:100%;font-size:12px;background:#fafaf9"></td>
-            </tr>
-            <tr>
-              <td class="trial-num">7</td>
-              <td><input type="text" id="vr_7_code" placeholder="7:30s stand"></td>
-              <td><input type="text" id="vr_7_cond"></td>
-              <td><input type="text" id="vr_7_sam" style="width:60px"></td>
-              <td><input type="text" id="vr_7_elev"></td>
-              <td><input type="text" id="vr_7_comments"></td>
-            </tr>
-            <tr>
-              <td class="trial-num" style="color:var(--text-muted);font-size:11px"></td>
-              <td colspan="5"><input type="text" id="vr_7_walk" placeholder="7: walk — notes" style="border:1px solid var(--border);border-radius:3px;padding:4px 7px;width:100%;font-size:12px;background:#fafaf9"></td>
-            </tr>
-            <tr>
-              <td class="trial-num">8</td>
-              <td><input type="text" id="vr_8_code" placeholder="8:30s stand"></td>
-              <td><input type="text" id="vr_8_cond"></td>
-              <td><input type="text" id="vr_8_sam" style="width:60px"></td>
-              <td><input type="text" id="vr_8_elev"></td>
-              <td><input type="text" id="vr_8_comments"></td>
-            </tr>
-            <tr>
-              <td class="trial-num" style="color:var(--text-muted);font-size:11px"></td>
-              <td colspan="5"><input type="text" id="vr_8_walk" placeholder="8: walk — notes" style="border:1px solid var(--border);border-radius:3px;padding:4px 7px;width:100%;font-size:12px;background:#fafaf9"></td>
-            </tr>
-            <tr>
-              <td class="trial-num">9</td>
-              <td><input type="text" id="vr_9_code" placeholder="9:30s stand"></td>
-              <td><input type="text" id="vr_9_cond"></td>
-              <td><input type="text" id="vr_9_sam" style="width:60px"></td>
-              <td><input type="text" id="vr_9_elev"></td>
-              <td><input type="text" id="vr_9_comments"></td>
-            </tr>
-            <tr>
-              <td class="trial-num" style="color:var(--text-muted);font-size:11px"></td>
-              <td colspan="5"><input type="text" id="vr_9_walk" placeholder="9: walk — notes" style="border:1px solid var(--border);border-radius:3px;padding:4px 7px;width:100%;font-size:12px;background:#fafaf9"></td>
-            </tr>
-            <tr>
-              <td class="trial-num">10</td>
-              <td><input type="text" id="vr_10_code" placeholder="10:30s stand"></td>
-              <td><input type="text" id="vr_10_cond"></td>
-              <td><input type="text" id="vr_10_sam" style="width:60px"></td>
-              <td><input type="text" id="vr_10_elev"></td>
-              <td><input type="text" id="vr_10_comments"></td>
-            </tr>
-            <tr>
-              <td class="trial-num" style="color:var(--text-muted);font-size:11px"></td>
-              <td colspan="5"><input type="text" id="vr_10_walk" placeholder="10: walk — notes" style="border:1px solid var(--border);border-radius:3px;padding:4px 7px;width:100%;font-size:12px;background:#fafaf9"></td>
-            </tr>
-          </tbody>
-        </table>
-
-        <div class="divider"></div>
-        <div class="section-title">Post-VR Questionnaires</div>
-        <div class="checklist">
-          <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"><span>STAI-State-4</span></label>
-          <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"><span>SSQ</span></label>
-          <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"><span>STAI-State-3 (pre-VR)</span></label>
-        </div>
-      </div>
-    </div>
-
-    <!-- Giladi ON -->
-    <div class="card">
-      <div class="card-header secondary">Giladi Protocol — ON</div>
-      <div class="card-body">
-        <div class="form-row cols-4">
-          <div class="field">
-            <label>Doorway Size</label>
-            <input type="text" id="giladi_on_doorway" placeholder="cm or in">
-          </div>
-          <div class="field">
-            <label>Assessor Initials</label>
-            <input type="text" id="giladi_on_initials" placeholder="">
-          </div>
-          <div class="field">
-            <label>Start Time</label>
-            <input type="time" id="giladi_on_start">
-          </div>
-          <div class="field">
-            <label>Walking Aid Used?</label>
-            <select id="giladi_on_walking_aid">
-              <option value="">—</option>
-              <option>No</option>
-              <option>Yes — Cane</option>
-              <option>Yes — Walker</option>
-              <option>Yes — Other</option>
-            </select>
-          </div>
-        </div>
-        <table class="giladi-table" style="margin-top:8px">
-          <thead>
-            <tr>
-              <th>Trial</th>
-              <th>Duration of FOG (0–4)</th>
-              <th>Frequency of FOG (0–4)</th>
-              <th>Total</th>
-              <th>Confidence (0–4)</th>
-              <th>Notes</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td class="trial-label">1. Walk</td><td><input type="number" min="0" max="4" id="g_on_1_dur" oninput="calcGiladi('on',1)"></td><td><input type="number" min="0" max="4" id="g_on_1_freq" oninput="calcGiladi('on',1)"></td><td><input type="text" id="g_on_1_total" readonly></td><td><input type="number" min="0" max="4" id="g_on_1_conf"></td><td><input type="text" id="g_on_1_notes"></td></tr>
-            <tr><td class="trial-label">2. Dual-Task Walk</td><td><input type="number" min="0" max="4" id="g_on_2_dur" oninput="calcGiladi('on',2)"></td><td><input type="number" min="0" max="4" id="g_on_2_freq" oninput="calcGiladi('on',2)"></td><td><input type="text" id="g_on_2_total" readonly></td><td><input type="number" min="0" max="4" id="g_on_2_conf"></td><td><input type="text" id="g_on_2_notes"></td></tr>
-            <tr><td class="trial-label">3. Carrying</td><td><input type="number" min="0" max="4" id="g_on_3_dur" oninput="calcGiladi('on',3)"></td><td><input type="number" min="0" max="4" id="g_on_3_freq" oninput="calcGiladi('on',3)"></td><td><input type="text" id="g_on_3_total" readonly></td><td><input type="number" min="0" max="4" id="g_on_3_conf"></td><td><input type="text" id="g_on_3_notes"></td></tr>
-            <tr><td class="trial-label">4. Turns</td><td><input type="number" min="0" max="4" id="g_on_4_dur" oninput="calcGiladi('on',4)"></td><td><input type="number" min="0" max="4" id="g_on_4_freq" oninput="calcGiladi('on',4)"></td><td><input type="text" id="g_on_4_total" readonly></td><td><input type="number" min="0" max="4" id="g_on_4_conf"></td><td><input type="text" id="g_on_4_notes"></td></tr>
-            <tr><td class="trial-label">5. Dual-Task Turns</td><td><input type="number" min="0" max="4" id="g_on_5_dur" oninput="calcGiladi('on',5)"></td><td><input type="number" min="0" max="4" id="g_on_5_freq" oninput="calcGiladi('on',5)"></td><td><input type="text" id="g_on_5_total" readonly></td><td><input type="number" min="0" max="4" id="g_on_5_conf"></td><td><input type="text" id="g_on_5_notes"></td></tr>
-            <tr><td class="trial-label">6. Box Shuffle</td><td><input type="number" min="0" max="4" id="g_on_6_dur" oninput="calcGiladi('on',6)"></td><td><input type="number" min="0" max="4" id="g_on_6_freq" oninput="calcGiladi('on',6)"></td><td><input type="text" id="g_on_6_total" readonly></td><td><input type="number" min="0" max="4" id="g_on_6_conf"></td><td><input type="text" id="g_on_6_notes"></td></tr>
-            <tr><td class="trial-label">7. Box Agility</td><td><input type="number" min="0" max="4" id="g_on_7_dur" oninput="calcGiladi('on',7)"></td><td><input type="number" min="0" max="4" id="g_on_7_freq" oninput="calcGiladi('on',7)"></td><td><input type="text" id="g_on_7_total" readonly></td><td><input type="number" min="0" max="4" id="g_on_7_conf"></td><td><input type="text" id="g_on_7_notes"></td></tr>
-            <tr><td class="trial-label">8. Doorway</td><td><input type="number" min="0" max="4" id="g_on_8_dur" oninput="calcGiladi('on',8)"></td><td><input type="number" min="0" max="4" id="g_on_8_freq" oninput="calcGiladi('on',8)"></td><td><input type="text" id="g_on_8_total" readonly></td><td><input type="number" min="0" max="4" id="g_on_8_conf"></td><td><input type="text" id="g_on_8_notes"></td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="section-footer">
-      <button class="btn-nav" onclick="goTo(4)">← Giladi</button>
-      <button class="btn-nav next" onclick="goTo(6)">Data Management →</button>
-    </div>
-  </div>
-
-  <!-- ─────────────── SECTION 6: Data Management ─────────────── -->
-  <div class="section" id="sec-6">
-
-    <div class="card">
-      <div class="card-header">Post-Assessment Data Management</div>
-      <div class="card-body">
-        <div class="form-row cols-2" style="margin-bottom:16px">
-          <div class="field">
-            <label>File Name Convention</label>
-            <input type="text" id="file_name_convention" placeholder="e.g. PD001_S1_2024">
-          </div>
-        </div>
-
-        <div class="section-title">Data Offload Checklist</div>
-        <div class="offload-grid">
-          <div class="offload-item">
-            <label>OPALS</label>
-            <label class="offload-check"><input type="checkbox" id="offload_opals"> Done</label>
-          </div>
-          <div class="offload-item">
-            <label>Equivital</label>
-            <label class="offload-check"><input type="checkbox" id="offload_equivital"> Done</label>
-          </div>
-          <div class="offload-item">
-            <label>UPDRS (OFF/ON)</label>
-            <label class="offload-check"><input type="checkbox" id="offload_updrs"> Done</label>
-          </div>
-          <div class="offload-item">
-            <label>PKMAS</label>
-            <label class="offload-check"><input type="checkbox" id="offload_pkmas"> Done</label>
-          </div>
-          <div class="offload-item">
-            <label>MoCA</label>
-            <label class="offload-check"><input type="checkbox" id="offload_moca"> Done</label>
-          </div>
-          <div class="offload-item">
-            <label>TMT-A</label>
-            <label class="offload-check"><input type="checkbox" id="offload_tmta"> Done</label>
-          </div>
-          <div class="offload-item">
-            <label>TMT-B</label>
-            <label class="offload-check"><input type="checkbox" id="offload_tmtb"> Done</label>
-          </div>
-          <div class="offload-item">
-            <label>SAM</label>
-            <label class="offload-check"><input type="checkbox" id="offload_sam"> Done</label>
-          </div>
-          <div class="offload-item">
-            <label>CLINRO</label>
-            <label class="offload-check"><input type="checkbox" id="offload_clinro"> Done</label>
-          </div>
-          <div class="offload-item">
-            <label>SSQ</label>
-            <label class="offload-check"><input type="checkbox" id="offload_ssq"> Done</label>
-          </div>
-          <div class="offload-item">
-            <label>STAI-S (1–4)</label>
-            <label class="offload-check"><input type="checkbox" id="offload_stai"> Done</label>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header secondary">Data Upload — Enter Dates</div>
-      <div class="card-body">
-        <table class="upload-table">
-          <thead>
-            <tr><th>Data Type</th><th>Local Drive</th><th>Data Repository</th></tr>
-          </thead>
-          <tbody>
-            <tr><td style="font-family:var(--mono);font-size:12px">Sensors</td><td><input type="date" id="upload_sensors_local"></td><td><input type="date" id="upload_sensors_repo"></td></tr>
-            <tr><td style="font-family:var(--mono);font-size:12px">Video</td><td><input type="date" id="upload_video_local"></td><td><input type="date" id="upload_video_repo"></td></tr>
-            <tr><td style="font-family:var(--mono);font-size:12px">Paper Data</td><td><input type="date" id="upload_paper_local"></td><td><input type="date" id="upload_paper_repo"></td></tr>
-          </tbody>
-        </table>
-        <div style="margin-top:12px">
-          <div class="field">
-            <label>Video Blurring</label>
-            <select id="video_blurring">
-              <option value="">—</option>
-              <option>Completed</option>
-              <option>Not required</option>
-              <option>Pending</option>
-            </select>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header secondary">Session Notes</div>
-      <div class="card-body">
-        <div class="field">
-          <label>Notes</label>
-          <textarea id="session_notes" rows="5" placeholder="Any additional notes, observations, or adverse events during the session..."></textarea>
-        </div>
-      </div>
-    </div>
-
-    <div class="section-footer">
-      <button class="btn-nav" onclick="goTo(5)">← Test-ON / VR</button>
-      <button class="btn-nav next" onclick="exportCSV()">↓ Export CSV</button>
-    </div>
-  </div>
-
+  <div class="section-footer"><div></div><button class="btn-nav next" onclick="goTo(1)">Screening →</button></div>
 </div>
 
+<!-- ══ 1: SCREENING ══ -->
+<div class="section" id="sec-1">
+  <div class="card">
+    <div class="card-header blue">Screening Protocol</div>
+    <div class="card-body">
+      <div class="form-row cols-4">
+        <div class="field" style="grid-column:span 2"><label>RC Initials (Screening)</label><input type="text" id="screening_rc_initials" placeholder="Initials"></div>
+        <div class="field"><label>Eligible</label><select id="eligible"><option value="">—</option><option>Yes</option><option>No</option></select></div>
+        <div class="field"><label>Freezer?</label><select id="freezer"><option value="">—</option><option>Yes</option><option>No</option></select></div>
+      </div>
+      <div class="form-row"><div class="field"><label>Screen-Fail Reason (if ineligible)</label><textarea id="screen_fail_reason" placeholder="Leave blank if eligible"></textarea></div></div>
+      <div class="info-box"><strong>Exclusions:</strong> DBS, discomfort with VR, medical implant (pacemaker etc.), uncorrected auditory/visual impairment or balance disorder, neurological impairment, unable to walk 30 min unassisted, inner ear infection/fatigue/stress/cold/flu, pregnant, unable to go OFF meds for ≥12–24h.</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header neutral">Consent</div>
+    <div class="card-body">
+      <div class="consent-row"><span class="consent-label">Consent Form</span><div class="yn-group"><button class="yn-btn" onclick="setYN(this,'consent_form','Y')">Y</button><button class="yn-btn" onclick="setYN(this,'consent_form','N')">N</button></div><input type="hidden" id="consent_form"></div>
+      <div class="consent-row"><span class="consent-label">Media Consent</span><div class="yn-group"><button class="yn-btn" onclick="setYN(this,'media_consent','Y')">Y</button><button class="yn-btn" onclick="setYN(this,'media_consent','N')">N</button></div><input type="hidden" id="media_consent"></div>
+      <div class="consent-row"><span class="consent-label">Future Studies / Database (UW-PD)</span><div class="yn-group"><button class="yn-btn" onclick="setYN(this,'future_studies','Y')">Y</button><button class="yn-btn" onclick="setYN(this,'future_studies','N')">N</button></div><input type="hidden" id="future_studies"></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header neutral">Anthropometrics & Medical History</div>
+    <div class="card-body">
+      <div class="form-row cols-4">
+        <div class="field"><label>Height (cm)</label><input type="number" id="height_cm" placeholder="cm"></div>
+        <div class="field"><label>Weight (lb)</label><input type="number" id="weight_lb" placeholder="lb"></div>
+        <div class="field"><label>Symptom Onset (~YYYY-MM)</label><input type="text" id="symptom_onset" placeholder="YYYY-MM"></div>
+        <div class="field"><label>Formal Diagnosis Date</label><input type="date" id="formal_diagnosis_date"></div>
+      </div>
+      <div class="form-row"><div class="field"><label>Other Medical History</label><textarea id="other_medical_hx" rows="3" placeholder="Enter relevant medical history…"></textarea></div></div>
+      <div class="form-row cols-3">
+        <div class="field"><label>Fall Events</label><select id="fall_events"><option value="">—</option><option>No falls</option><option>Actual falls</option><option>Incidental falls</option><option>Both</option></select></div>
+        <div class="field"><label>Actual Falls #</label><input type="number" id="actual_falls" min="0"></div>
+        <div class="field"><label>Incidental Falls #</label><input type="number" id="incidental_falls" min="0"></div>
+      </div>
+      <div class="form-row cols-2"><div class="field"><label>Reported By (RC Initials)</label><input type="text" id="fall_reported_initials" placeholder="Initials"></div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header neutral">Medications (All Meds)</div>
+    <div class="card-body">
+      <table class="med-table">
+        <thead><tr><th>Medication Name</th><th>Dose (unit)</th><th>Frequency</th><th>Med. Name</th><th>Dose</th><th>Frequency</th></tr></thead>
+        <tbody>
+          <tr><td><input type="text" id="med1_name" placeholder="Med name"></td><td><input type="text" id="med1_dose"></td><td><input type="text" id="med1_freq"></td><td><input type="text" id="med1_name2"></td><td><input type="text" id="med1_dose2"></td><td><input type="text" id="med1_freq2"></td></tr>
+          <tr><td><input type="text" id="med2_name"></td><td><input type="text" id="med2_dose"></td><td><input type="text" id="med2_freq"></td><td><input type="text" id="med2_name2"></td><td><input type="text" id="med2_dose2"></td><td><input type="text" id="med2_freq2"></td></tr>
+          <tr><td><input type="text" id="med3_name"></td><td><input type="text" id="med3_dose"></td><td><input type="text" id="med3_freq"></td><td><input type="text" id="med3_name2"></td><td><input type="text" id="med3_dose2"></td><td><input type="text" id="med3_freq2"></td></tr>
+          <tr><td><input type="text" id="med4_name"></td><td><input type="text" id="med4_dose"></td><td><input type="text" id="med4_freq"></td><td><input type="text" id="med4_name2"></td><td><input type="text" id="med4_dose2"></td><td><input type="text" id="med4_freq2"></td></tr>
+          <tr><td><input type="text" id="med5_name"></td><td><input type="text" id="med5_dose"></td><td><input type="text" id="med5_freq"></td><td><input type="text" id="med5_name2"></td><td><input type="text" id="med5_dose2"></td><td><input type="text" id="med5_freq2"></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="section-footer"><button class="btn-nav" onclick="goTo(0)">← Prep</button><button class="btn-nav next" onclick="goTo(2)">Test-OFF →</button></div>
+</div>
+
+<!-- ══ 2: TEST-OFF ══ -->
+<div class="section" id="sec-2">
+  <div class="phase-banner off">🔵 Test-OFF Phase — Participant is OFF medication</div>
+  <div class="card">
+    <div class="card-header off">Subject Preparation</div>
+    <div class="card-body">
+      <div class="form-row cols-3">
+        <div class="field"><label>RC Initials</label><input type="text" id="subj_prep_initials" placeholder="Initials"></div>
+        <div class="field"><label>Time Since Last Dose</label><input type="text" id="time_since_dose" placeholder="e.g. 14h"></div>
+        <div class="field"><label>Equivital Size</label><input type="text" id="equivital_size" placeholder="e.g. M / L"></div>
+      </div>
+      <div class="checklist">
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"><span>OPAL Sensor orientation — USB Face Down</span></label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"><span>All sensors flashing green</span></label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Water / snacks available</span></label>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header off">UPDRS-III (OFF)</div>
+    <div class="card-body">
+      <div class="form-row cols-3">
+        <div class="field"><label>UPDRS-III Score (OFF)</label><input type="number" id="updrs_off_score" placeholder="Score"></div>
+        <div class="field"><label>Start Time</label><input type="time" id="updrs_off_time"></div>
+        <div class="field"><label>Assessor Initials</label><input type="text" id="updrs_off_initials"></div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header off">Blood Pressure — OFF</div>
+    <div class="card-body">
+      <table class="bp-table">
+        <thead><tr><th></th><th>Systolic (mmHg)</th><th>Diastolic (mmHg)</th><th>Heart Rate</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr class="discard-row"><td class="row-label">Reading 1 (discard)</td><td><input type="number" id="bp_off_1_sys"></td><td><input type="number" id="bp_off_1_dia"></td><td><input type="number" id="bp_off_1_hr"></td><td><input type="text" id="bp_off_1_notes"></td></tr>
+          <tr><td class="row-label">Reading 2</td><td><input type="number" id="bp_off_2_sys" oninput="calcBP('off')"></td><td><input type="number" id="bp_off_2_dia" oninput="calcBP('off')"></td><td><input type="number" id="bp_off_2_hr"></td><td><input type="text" id="bp_off_2_notes"></td></tr>
+          <tr><td class="row-label">Reading 3</td><td><input type="number" id="bp_off_3_sys" oninput="calcBP('off')"></td><td><input type="number" id="bp_off_3_dia" oninput="calcBP('off')"></td><td><input type="number" id="bp_off_3_hr"></td><td><input type="text" id="bp_off_3_notes"></td></tr>
+          <tr class="avg-row"><td class="row-label" style="font-weight:600">Avg (2 & 3)</td><td><input type="text" id="bp_off_avg_sys" readonly></td><td><input type="text" id="bp_off_avg_dia" readonly></td><td></td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header off">Baseline Assessments — <em>Outside</em> VR (5-min)</div>
+    <div class="card-body">
+      <p style="font-size:12.5px;color:var(--text-dim);margin-bottom:10px">Remind participant to remain quiet. Note adverse events (talking, sneezing, moving).</p>
+      <table class="assess-table">
+        <thead><tr><th>Assessment</th><th style="width:60px">Done</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>5-min quiet <strong>SITTING</strong> (backrest + arm rests) <span style="color:var(--accent2);font-weight:600">— ★ BP</span></td><td><input type="checkbox" class="done-check" id="baseline_off_sitting"></td><td><input class="notes-input" type="text" id="baseline_off_sitting_notes"></td></tr>
+          <tr><td>5-min quiet <strong>STANDING</strong></td><td><input type="checkbox" class="done-check" id="baseline_off_standing"></td><td><input class="notes-input" type="text" id="baseline_off_standing_notes"></td></tr>
+          <tr><td>5-min quiet <strong>WALKING</strong></td><td><input type="checkbox" class="done-check" id="baseline_off_walking"></td><td><input class="notes-input" type="text" id="baseline_off_walking_notes"></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="section-footer"><button class="btn-nav" onclick="goTo(1)">← Screening</button><button class="btn-nav next" onclick="goTo(3)">Giladi OFF →</button></div>
+</div>
+
+<!-- ══ 3: GILADI OFF ══ -->
+<div class="section" id="sec-3">
+  <div class="phase-banner off">🔵 Giladi Protocol — OFF State</div>
+  <div class="info-box">
+    <strong>Duration FOG:</strong> 0=None · 1=Mild &lt;10% · 2=Moderate 10–50% · 3=Severe &gt;50% · 4=Unable/assist<br>
+    <strong>Frequency FOG:</strong> 0=None · 1=1 brief &lt;1s · 2=Many brief OR 1 long &gt;2s · 3=Many long · 4=Unable<br>
+    <em>Trial &gt;60s due to FOG → grade 4. Participant fails instructions → repeat at end, document in notes.</em>
+  </div>
+  <div class="card">
+    <div class="card-header off">Giladi OFF — Session Info</div>
+    <div class="card-body">
+      <div class="form-row cols-4">
+        <div class="field"><label>Doorway Size</label><input type="text" id="giladi_off_doorway" placeholder="cm/in"></div>
+        <div class="field"><label>Assessor Initials</label><input type="text" id="giladi_off_initials"></div>
+        <div class="field"><label>Start Time</label><input type="time" id="giladi_off_start"></div>
+        <div class="field"><label>Walking Aid</label><select id="giladi_off_aid"><option value="">—</option><option>No</option><option>Yes — Cane</option><option>Yes — Walker</option><option>Yes — Other</option></select></div>
+      </div>
+      <div class="form-row cols-2"><div class="field"><label>Aid Detail (if yes)</label><input type="text" id="giladi_off_aid_detail" placeholder="Describe"></div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header off">Giladi Trials — OFF</div>
+    <div class="card-body">
+      <table class="giladi-table">
+        <thead><tr><th style="min-width:140px">Trial</th><th style="width:75px">Turns #/4</th><th style="width:105px">Duration (0–4)</th><th style="width:105px">Frequency (0–4)</th><th style="width:70px">Total</th><th style="width:85px">Confidence (0–4)</th><th>Notes</th></tr></thead>
+        <tbody id="giladi-off-body"></tbody>
+      </table>
+    </div>
+  </div>
+  <div class="section-footer"><button class="btn-nav" onclick="goTo(2)">← Test-OFF</button><button class="btn-nav next" onclick="goTo(4)">VR Trials OFF →</button></div>
+</div>
+
+<!-- ══ 4: VR TRIALS OFF ══ -->
+<div class="section" id="sec-4">
+  <div class="phase-banner off">🥽 VR Walking Assessment — OFF State</div>
+  <div class="card">
+    <div class="card-header off">Pre-VR: STAI-State-1 + SSQ</div>
+    <div class="card-body"><div class="q-row"><label class="q-item"><input type="checkbox" onchange="toggleQItem(this)"> STAI-State-1</label><label class="q-item"><input type="checkbox" onchange="toggleQItem(this)"> SSQ</label></div></div>
+  </div>
+  <div class="card">
+    <div class="card-header off">Baseline Inside VR — OFF (2-min)</div>
+    <div class="card-body">
+      <table class="assess-table">
+        <thead><tr><th>Assessment</th><th style="width:60px">Done</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>2-min quiet <strong>SITTING</strong> (backrest + arm rests)</td><td><input type="checkbox" class="done-check" id="vr_off_sitting"></td><td><input class="notes-input" type="text" id="vr_off_sitting_notes"></td></tr>
+          <tr><td>2-min quiet <strong>STANDING</strong></td><td><input type="checkbox" class="done-check" id="vr_off_standing"></td><td><input class="notes-input" type="text" id="vr_off_standing_notes"></td></tr>
+          <tr><td>2-min quiet <strong>WALKING</strong></td><td><input type="checkbox" class="done-check" id="vr_off_walking"></td><td><input class="notes-input" type="text" id="vr_off_walking_notes"></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header off">OFF Walking Assessment — Trials 1–10 <small style="opacity:0.7;font-size:10px;margin-left:8px">★ Min 3 good trials</small></div>
+    <div class="card-body" id="vr-off-container"></div>
+  </div>
+  <div class="card">
+    <div class="card-header off">Post-VR: STAI-State-2 + SSQ</div>
+    <div class="card-body"><div class="q-row"><label class="q-item"><input type="checkbox" onchange="toggleQItem(this)"> STAI-State-2</label><label class="q-item"><input type="checkbox" onchange="toggleQItem(this)"> SSQ</label></div></div>
+  </div>
+  <div class="section-footer"><button class="btn-nav" onclick="goTo(3)">← Giladi OFF</button><button class="btn-nav" style="background:var(--med-color);color:white;border-color:var(--med-color)" onclick="goTo(5)">Medication Intake →</button></div>
+</div>
+
+<!-- ══ 5: MEDICATION INTAKE ══ -->
+<div class="section" id="sec-5">
+  <div class="phase-banner med">💊 Medication Intake & Break (~60 min)</div>
+  <div class="timer-block">
+    <div class="timer-icon">⏱</div>
+    <div><h3>Set 40-minute timer to prep ON testing</h3><p>Turn off GoPros · Offload videos · Charge VR batteries</p></div>
+  </div>
+  <div class="card">
+    <div class="card-header med">Medication Intake</div>
+    <div class="card-body">
+      <div class="form-row cols-2">
+        <div class="field"><label>Intake Time</label><input type="time" id="med_intake_time"></div>
+        <div class="field"><label>Inventory Confirmed</label><select id="med_inventory_confirmed"><option value="">—</option><option>Yes</option><option>No</option></select></div>
+      </div>
+      <div class="checklist">
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"><span>GoPros turned off</span></label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Videos offloaded</span></label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"><span>VR batteries charging</span></label>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header med">Patient Questionnaires (★ if not done at home)</div>
+    <div class="card-body">
+      <div class="q-row">
+        <label class="q-item"><input type="checkbox" onchange="toggleQItem(this)"> NFOG-Q</label>
+        <label class="q-item"><input type="checkbox" onchange="toggleQItem(this)"> FES</label>
+        <label class="q-item"><input type="checkbox" onchange="toggleQItem(this)"> PAS</label>
+        <label class="q-item"><input type="checkbox" onchange="toggleQItem(this)"> STAI-T</label>
+        <label class="q-item"><input type="checkbox" onchange="toggleQItem(this)"> HADS</label>
+        <label class="q-item"><input type="checkbox" onchange="toggleQItem(this)"> RBDSQ</label>
+        <label class="q-item"><input type="checkbox" onchange="toggleQItem(this)"> C-FOG</label>
+        <label class="q-item"><input type="checkbox" onchange="toggleQItem(this)"> PDQ-39</label>
+        <label class="q-item"><input type="checkbox" onchange="toggleQItem(this)"> MoCA (RA)</label>
+        <label class="q-item"><input type="checkbox" onchange="toggleQItem(this)"> TMT-A & B</label>
+      </div>
+      <div class="divider"></div>
+      <div class="form-row cols-2">
+        <div class="field"><label>Questionnaires Completed By</label><select id="q_completed_by"><option value="">—</option><option>Patient</option><option>Combination</option><option>Companion</option><option>Facilitated by RA</option><option>Done @ Home</option></select></div>
+      </div>
+      <div class="form-row"><div class="field"><label>Notes</label><textarea id="med_notes" rows="3" placeholder="Notes during medication break…"></textarea></div></div>
+    </div>
+  </div>
+  <div class="section-footer"><button class="btn-nav" onclick="goTo(4)">← VR Trials OFF</button><button class="btn-nav" style="background:var(--on-color);color:white;border-color:var(--on-color)" onclick="goTo(6)">Test-ON →</button></div>
+</div>
+
+<!-- ══ 6: TEST-ON ══ -->
+<div class="section" id="sec-6">
+  <div class="phase-banner on">🟢 Test-ON Phase — ~60 min after medication intake</div>
+  <div class="card">
+    <div class="card-header on">Subject Readiness</div>
+    <div class="card-body">
+      <div class="checklist">
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Sensor check / battery check</span></label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"><span>Camera equipment set-up (batteries)</span></label>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header on">UPDRS-III (ON) + Cognitive Tests</div>
+    <div class="card-body">
+      <div class="form-row cols-3">
+        <div class="field"><label>UPDRS-III Score (ON)</label><input type="number" id="updrs_on_score"></div>
+        <div class="field"><label>Start Time</label><input type="time" id="updrs_on_time"></div>
+        <div class="field"><label>Assessor Initials</label><input type="text" id="updrs_on_initials"></div>
+      </div>
+      <div class="form-row cols-4">
+        <div class="field"><label>MoCA Score (ON)</label><input type="number" id="moca_on_score" placeholder="/30"></div>
+        <div class="field"><label>MoCA Time (ON)</label><input type="time" id="moca_on_time"></div>
+        <div class="field"><label>TMT-A (secs)</label><input type="number" id="tmta_on_time"></div>
+        <div class="field"><label>TMT-B (secs)</label><input type="number" id="tmtb_on_time"></div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header on">Baseline Inside VR — ON (2-min)</div>
+    <div class="card-body">
+      <table class="assess-table">
+        <thead><tr><th>Assessment</th><th style="width:60px">Done</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>2-min quiet <strong>SITTING</strong> (backrest + arm rests)</td><td><input type="checkbox" class="done-check" id="vr_on_pre_sitting"></td><td><input class="notes-input" type="text" id="vr_on_pre_sitting_notes"></td></tr>
+          <tr><td>2-min quiet <strong>STANDING</strong></td><td><input type="checkbox" class="done-check" id="vr_on_pre_standing"></td><td><input class="notes-input" type="text" id="vr_on_pre_standing_notes"></td></tr>
+          <tr><td>2-min quiet <strong>WALKING</strong></td><td><input type="checkbox" class="done-check" id="vr_on_pre_walking"></td><td><input class="notes-input" type="text" id="vr_on_pre_walking_notes"></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header on">Baseline Outside VR — ON (5-min)</div>
+    <div class="card-body">
+      <table class="assess-table">
+        <thead><tr><th>Assessment</th><th style="width:60px">Done</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>5-min quiet <strong>SITTING</strong> (backrest + arm rests)</td><td><input type="checkbox" class="done-check" id="baseline_on_sitting"></td><td><input class="notes-input" type="text" id="baseline_on_sitting_notes"></td></tr>
+          <tr><td>5-min quiet <strong>STANDING</strong></td><td><input type="checkbox" class="done-check" id="baseline_on_standing"></td><td><input class="notes-input" type="text" id="baseline_on_standing_notes"></td></tr>
+          <tr><td>5-min quiet <strong>WALKING</strong></td><td><input type="checkbox" class="done-check" id="baseline_on_walking"></td><td><input class="notes-input" type="text" id="baseline_on_walking_notes"></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header on">Blood Pressure — ON</div>
+    <div class="card-body">
+      <table class="bp-table">
+        <thead><tr><th></th><th>Systolic (mmHg)</th><th>Diastolic (mmHg)</th><th>Heart Rate</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr class="discard-row"><td class="row-label">Reading 1 (discard)</td><td><input type="number" id="bp_on_1_sys"></td><td><input type="number" id="bp_on_1_dia"></td><td><input type="number" id="bp_on_1_hr"></td><td><input type="text" id="bp_on_1_notes"></td></tr>
+          <tr><td class="row-label">Reading 2</td><td><input type="number" id="bp_on_2_sys" oninput="calcBP('on')"></td><td><input type="number" id="bp_on_2_dia" oninput="calcBP('on')"></td><td><input type="number" id="bp_on_2_hr"></td><td><input type="text" id="bp_on_2_notes"></td></tr>
+          <tr><td class="row-label">Reading 3</td><td><input type="number" id="bp_on_3_sys" oninput="calcBP('on')"></td><td><input type="number" id="bp_on_3_dia" oninput="calcBP('on')"></td><td><input type="number" id="bp_on_3_hr"></td><td><input type="text" id="bp_on_3_notes"></td></tr>
+          <tr class="avg-row"><td class="row-label" style="font-weight:600">Avg (2 & 3)</td><td><input type="text" id="bp_on_avg_sys" readonly></td><td><input type="text" id="bp_on_avg_dia" readonly></td><td></td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="section-footer"><button class="btn-nav" onclick="goTo(5)">← Med Intake</button><button class="btn-nav" style="background:var(--on-color);color:white;border-color:var(--on-color)" onclick="goTo(7)">Giladi ON →</button></div>
+</div>
+
+<!-- ══ 7: GILADI ON ══ -->
+<div class="section" id="sec-7">
+  <div class="phase-banner on">🟢 Giladi Protocol — ON State</div>
+  <div class="info-box">
+    <strong>Duration FOG:</strong> 0=None · 1=Mild &lt;10% · 2=Moderate 10–50% · 3=Severe &gt;50% · 4=Unable/assist<br>
+    <strong>Frequency FOG:</strong> 0=None · 1=1 brief &lt;1s · 2=Many brief OR 1 long &gt;2s · 3=Many long · 4=Unable<br>
+    <em>Trial &gt;60s due to FOG → grade 4. Participant fails instructions → repeat at end, document.</em>
+  </div>
+  <div class="card">
+    <div class="card-header on">Giladi ON — Session Info</div>
+    <div class="card-body">
+      <div class="form-row cols-4">
+        <div class="field"><label>Doorway Size</label><input type="text" id="giladi_on_doorway" placeholder="cm/in"></div>
+        <div class="field"><label>Assessor Initials</label><input type="text" id="giladi_on_initials"></div>
+        <div class="field"><label>Start Time</label><input type="time" id="giladi_on_start"></div>
+        <div class="field"><label>Walking Aid</label><select id="giladi_on_aid"><option value="">—</option><option>No</option><option>Yes — Cane</option><option>Yes — Walker</option><option>Yes — Other</option></select></div>
+      </div>
+      <div class="form-row cols-2"><div class="field"><label>Aid Detail (if yes)</label><input type="text" id="giladi_on_aid_detail"></div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header on">Giladi Trials — ON</div>
+    <div class="card-body">
+      <table class="giladi-table">
+        <thead><tr><th style="min-width:140px">Trial</th><th style="width:75px">Turns #/4</th><th style="width:105px">Duration (0–4)</th><th style="width:105px">Frequency (0–4)</th><th style="width:70px">Total</th><th style="width:85px">Confidence (0–4)</th><th>Notes</th></tr></thead>
+        <tbody id="giladi-on-body"></tbody>
+      </table>
+    </div>
+  </div>
+  <div class="section-footer"><button class="btn-nav" onclick="goTo(6)">← Test-ON</button><button class="btn-nav" style="background:var(--on-color);color:white;border-color:var(--on-color)" onclick="goTo(8)">VR Trials ON →</button></div>
+</div>
+
+<!-- ══ 8: VR TRIALS ON ══ -->
+<div class="section" id="sec-8">
+  <div class="phase-banner on">🥽 VR Walking Assessment — ON State</div>
+  <div class="card">
+    <div class="card-header on">Pre-VR: STAI-State-3 + SSQ</div>
+    <div class="card-body"><div class="q-row"><label class="q-item"><input type="checkbox" onchange="toggleQItem(this)"> STAI-State-3</label><label class="q-item"><input type="checkbox" onchange="toggleQItem(this)"> SSQ</label></div></div>
+  </div>
+  <div class="card">
+    <div class="card-header on">Baseline Inside VR — ON (2-min)</div>
+    <div class="card-body">
+      <table class="assess-table">
+        <thead><tr><th>Assessment</th><th style="width:60px">Done</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>2-min quiet <strong>SITTING</strong> (backrest + arm rests)</td><td><input type="checkbox" class="done-check" id="vr_on_sitting"></td><td><input class="notes-input" type="text" id="vr_on_sitting_notes"></td></tr>
+          <tr><td>2-min quiet <strong>STANDING</strong></td><td><input type="checkbox" class="done-check" id="vr_on_standing"></td><td><input class="notes-input" type="text" id="vr_on_standing_notes"></td></tr>
+          <tr><td>2-min quiet <strong>WALKING</strong></td><td><input type="checkbox" class="done-check" id="vr_on_walking"></td><td><input class="notes-input" type="text" id="vr_on_walking_notes"></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header on">ON Walking Assessment — Trials 1–10 <small style="opacity:0.7;font-size:10px;margin-left:8px">★ Min 3 good trials</small></div>
+    <div class="card-body" id="vr-on-container"></div>
+  </div>
+  <div class="card">
+    <div class="card-header on">Post-VR: STAI-State-4 + SSQ</div>
+    <div class="card-body"><div class="q-row"><label class="q-item"><input type="checkbox" onchange="toggleQItem(this)"> STAI-State-4</label><label class="q-item"><input type="checkbox" onchange="toggleQItem(this)"> SSQ</label></div></div>
+  </div>
+  <div class="section-footer"><button class="btn-nav" onclick="goTo(7)">← Giladi ON</button><button class="btn-nav next" onclick="goTo(9)">Data Management →</button></div>
+</div>
+
+<!-- ══ 9: DATA MANAGEMENT ══ -->
+<div class="section" id="sec-9">
+  <div class="card">
+    <div class="card-header blue">Post-Assessment Data Management</div>
+    <div class="card-body">
+      <div class="form-row cols-2" style="margin-bottom:14px"><div class="field"><label>File Name Convention</label><input type="text" id="file_name_convention" placeholder="e.g. PD001_S1_2024"></div></div>
+      <div class="section-label">Data Offload Checklist</div>
+      <div class="offload-grid">
+        <div class="offload-item"><label>OPALS</label><label class="offload-check"><input type="checkbox" id="offload_opals"> Done</label></div>
+        <div class="offload-item"><label>Equivital</label><label class="offload-check"><input type="checkbox" id="offload_equivital"> Done</label></div>
+        <div class="offload-item"><label>UPDRS (OFF/ON)</label><label class="offload-check"><input type="checkbox" id="offload_updrs"> Done</label></div>
+        <div class="offload-item"><label>PKMAS</label><label class="offload-check"><input type="checkbox" id="offload_pkmas"> Done</label></div>
+        <div class="offload-item"><label>MoCA</label><label class="offload-check"><input type="checkbox" id="offload_moca"> Done</label></div>
+        <div class="offload-item"><label>TMT-A</label><label class="offload-check"><input type="checkbox" id="offload_tmta"> Done</label></div>
+        <div class="offload-item"><label>TMT-B</label><label class="offload-check"><input type="checkbox" id="offload_tmtb"> Done</label></div>
+        <div class="offload-item"><label>SAM</label><label class="offload-check"><input type="checkbox" id="offload_sam"> Done</label></div>
+        <div class="offload-item"><label>CLINRO</label><label class="offload-check"><input type="checkbox" id="offload_clinro"> Done</label></div>
+        <div class="offload-item"><label>SSQ</label><label class="offload-check"><input type="checkbox" id="offload_ssq"> Done</label></div>
+        <div class="offload-item"><label>STAI-S (1–4)</label><label class="offload-check"><input type="checkbox" id="offload_stai"> Done</label></div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header neutral">Data Upload — Enter Dates</div>
+    <div class="card-body">
+      <table class="upload-table">
+        <thead><tr><th>Data Type</th><th>Local Drive</th><th>Data Repository</th></tr></thead>
+        <tbody>
+          <tr><td style="font-family:var(--mono);font-size:12px">Sensors</td><td><input type="date" id="upload_sensors_local"></td><td><input type="date" id="upload_sensors_repo"></td></tr>
+          <tr><td style="font-family:var(--mono);font-size:12px">Video</td><td><input type="date" id="upload_video_local"></td><td><input type="date" id="upload_video_repo"></td></tr>
+          <tr><td style="font-family:var(--mono);font-size:12px">Paper Data</td><td><input type="date" id="upload_paper_local"></td><td><input type="date" id="upload_paper_repo"></td></tr>
+        </tbody>
+      </table>
+      <div class="form-row cols-2" style="margin-top:12px"><div class="field"><label>Video Blurring</label><select id="video_blurring"><option value="">—</option><option>Completed</option><option>Not Required</option><option>Pending</option></select></div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header neutral">Session Notes</div>
+    <div class="card-body"><div class="field"><textarea id="session_notes" rows="5" placeholder="Additional notes, observations, adverse events…"></textarea></div></div>
+  </div>
+  <div class="section-footer"><button class="btn-nav" onclick="goTo(8)">← VR Trials ON</button><button class="btn-nav next" onclick="exportCSV()">↓ Export CSV</button></div>
+</div>
+
+</div><!-- /app-body -->
 <div class="toast" id="toast"></div>
 
 <script>
+// ── Build Giladi rows ──
+const GILADI_TRIALS = [
+  {name:'1. Walk', turns:false},
+  {name:'2. Dual-Task Walk', turns:false},
+  {name:'3. Carrying', turns:false},
+  {name:'4. Turns', turns:true},
+  {name:'5. Dual-Task Turns', turns:true},
+  {name:'6. Box Shuffle', turns:false},
+  {name:'7. Box Agility', turns:false},
+  {name:'8. Doorway', turns:false}
+];
+
+function buildGiladi(state) {
+  const tbody = document.getElementById('giladi-'+state+'-body');
+  GILADI_TRIALS.forEach((t,i) => {
+    const n = i+1;
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td class="trial-label">${t.name}${t.turns ? '<span class="turns-note"># Completed (1/4):</span>' : ''}</td>
+      <td>${t.turns ? `<input type="text" id="g_${state}_${n}_turns" style="width:100%">` : ''}</td>
+      <td><input type="number" min="0" max="4" id="g_${state}_${n}_dur" oninput="calcGiladi('${state}',${n})"></td>
+      <td><input type="number" min="0" max="4" id="g_${state}_${n}_freq" oninput="calcGiladi('${state}',${n})"></td>
+      <td><input type="text" id="g_${state}_${n}_total" readonly></td>
+      <td><input type="number" min="0" max="4" id="g_${state}_${n}_conf"></td>
+      <td><input type="text" id="g_${state}_${n}_notes"></td>`;
+    tbody.appendChild(row);
+  });
+}
+buildGiladi('off');
+buildGiladi('on');
+
+// ── Build VR trial rows ──
+function buildVR(state) {
+  const container = document.getElementById('vr-'+state+'-container');
+  let html = `<table class="vr-table">
+    <thead><tr><th style="width:36px">#</th><th>Trial Code</th><th>Condition</th><th style="width:80px">SAM</th><th>Elev/Ground & Time</th><th>Comments</th></tr></thead>
+    <tbody>
+      <tr class="baseline-row">
+        <td class="trial-num">B</td>
+        <td><input type="text" id="vr_${state}_b_code" placeholder="Baseline"></td>
+        <td><input type="text" id="vr_${state}_b_cond"></td>
+        <td><input type="text" id="vr_${state}_b_sam"></td>
+        <td><input type="text" id="vr_${state}_b_elev"></td>
+        <td><input type="text" id="vr_${state}_b_comments"></td>
+      </tr>
+      <tr class="vr-divider"><td colspan="6">— Trials 1–5 &nbsp; Elev/Ground time: <input type="time" id="vr_${state}_time_1" style="font-size:11px;border:1px solid var(--border);border-radius:3px;padding:2px 6px;font-family:var(--mono)"> —</td></tr>`;
+  for (let i=1; i<=10; i++) {
+    if (i===6) html += `<tr class="vr-divider"><td colspan="6">— Trials 6–10 &nbsp; Elev/Ground time: <input type="time" id="vr_${state}_time_2" style="font-size:11px;border:1px solid var(--border);border-radius:3px;padding:2px 6px;font-family:var(--mono)"> —</td></tr>`;
+    html += `
+      <tr>
+        <td class="trial-num">${i}</td>
+        <td><input type="text" id="vr_${state}_${i}_code" placeholder="${i}: 30s stand"></td>
+        <td><input type="text" id="vr_${state}_${i}_cond"></td>
+        <td><input type="text" id="vr_${state}_${i}_sam"></td>
+        <td><input type="text" id="vr_${state}_${i}_elev"></td>
+        <td><input type="text" id="vr_${state}_${i}_comments"></td>
+      </tr>
+      <tr class="walk-row">
+        <td style="font-size:10px;color:var(--text-muted);font-family:var(--mono);text-align:center">↳</td>
+        <td colspan="5"><input type="text" id="vr_${state}_${i}_walk" placeholder="${i}: walk — notes" style="width:100%"></td>
+      </tr>`;
+  }
+  html += '</tbody></table>';
+  container.innerHTML = html;
+}
+buildVR('off');
+buildVR('on');
+
 // ── Navigation ──
-let currentSection = 0;
+let cur = 0;
 function goTo(n) {
-  document.getElementById('sec-' + currentSection).classList.remove('active');
-  document.getElementById('tab-' + currentSection).classList.remove('active');
-  currentSection = n;
-  document.getElementById('sec-' + n).classList.add('active');
-  document.getElementById('tab-' + n).classList.add('active');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  document.getElementById('sec-'+cur).classList.remove('active');
+  document.getElementById('tab-'+cur).classList.remove('active');
+  cur = n;
+  document.getElementById('sec-'+n).classList.add('active');
+  document.getElementById('tab-'+n).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
-// ── Checkbox styling ──
-function toggleCheck(el) {
-  el.closest('.check-item').classList.toggle('checked', el.checked);
+// ── Helpers ──
+function toggleCheck(el) { el.closest('.check-item').classList.toggle('checked', el.checked); }
+function toggleQItem(el) { el.closest('.q-item').classList.toggle('checked', el.checked); }
+function setYN(btn, id, val) {
+  btn.closest('.yn-group').querySelectorAll('.yn-btn').forEach(b=>b.classList.remove('active-y','active-n'));
+  btn.classList.add(val==='Y'?'active-y':'active-n');
+  document.getElementById(id).value = val;
 }
-
-// ── Y/N buttons ──
-function setYN(btn, fieldId, val) {
-  const group = btn.closest('.yn-group');
-  group.querySelectorAll('.yn-btn').forEach(b => { b.classList.remove('active-y','active-n'); });
-  btn.classList.add(val === 'Y' ? 'active-y' : 'active-n');
-  document.getElementById(fieldId).value = val;
-}
-
-// ── Header update ──
 function updateHeader() {
   const pid = document.getElementById('participant_id').value;
   const dt = document.getElementById('visit_datetime').value;
-  const info = document.getElementById('header-info');
-  if (pid) {
-    info.textContent = 'Participant: ' + pid + (dt ? '  |  ' + new Date(dt).toLocaleString() : '');
-  }
+  document.getElementById('header-info').textContent = pid
+    ? 'Participant: '+pid+(dt?' | '+new Date(dt).toLocaleString():'')
+    : 'New session — enter Participant ID to begin';
 }
-
-// ── BP auto-average ──
-function calcBP(state) {
-  const s2 = parseFloat(document.getElementById('bp_'+state+'_2_sys').value) || 0;
-  const s3 = parseFloat(document.getElementById('bp_'+state+'_3_sys').value) || 0;
-  const d2 = parseFloat(document.getElementById('bp_'+state+'_2_dia').value) || 0;
-  const d3 = parseFloat(document.getElementById('bp_'+state+'_3_dia').value) || 0;
-  if (s2 || s3) document.getElementById('bp_'+state+'_avg_sys').value = ((s2+s3)/2).toFixed(1);
-  if (d2 || d3) document.getElementById('bp_'+state+'_avg_dia').value = ((d2+d3)/2).toFixed(1);
+function calcBP(s) {
+  const s2=+document.getElementById('bp_'+s+'_2_sys').value||0, s3=+document.getElementById('bp_'+s+'_3_sys').value||0;
+  const d2=+document.getElementById('bp_'+s+'_2_dia').value||0, d3=+document.getElementById('bp_'+s+'_3_dia').value||0;
+  if(s2||s3) document.getElementById('bp_'+s+'_avg_sys').value=((s2+s3)/2).toFixed(1);
+  if(d2||d3) document.getElementById('bp_'+s+'_avg_dia').value=((d2+d3)/2).toFixed(1);
 }
-
-// ── Giladi auto-total ──
-function calcGiladi(state, trial) {
-  const dur = parseFloat(document.getElementById('g_'+state+'_'+trial+'_dur').value) || 0;
-  const freq = parseFloat(document.getElementById('g_'+state+'_'+trial+'_freq').value) || 0;
-  document.getElementById('g_'+state+'_'+trial+'_total').value = dur + freq;
+function calcGiladi(state, t) {
+  const d=+document.getElementById('g_'+state+'_'+t+'_dur').value||0;
+  const f=+document.getElementById('g_'+state+'_'+t+'_freq').value||0;
+  document.getElementById('g_'+state+'_'+t+'_total').value=d+f;
 }
-
-// ── Get value helper ──
 function v(id) {
-  const el = document.getElementById(id);
-  if (!el) return '';
-  if (el.type === 'checkbox') return el.checked ? 'Yes' : 'No';
-  return el.value || '';
+  const el=document.getElementById(id); if(!el) return '';
+  return el.type==='checkbox' ? (el.checked?'Yes':'No') : (el.value||'');
 }
 
-// ── CSV Export ──
+// ── Export CSV ──
 function exportCSV() {
-  const rows = [];
-  const row = (label, value) => rows.push([label, String(value).replace(/,/g, ';').replace(/\n/g, ' ')]);
+  const rows=[['Field','Value']];
+  const r=(label,val)=>rows.push(['"'+label+'"','"'+String(val).replace(/"/g,'""').replace(/\n/g,' ')+'"']);
 
-  // SECTION 0
-  row('Participant ID', v('participant_id'));
-  row('Test Session/Trial #', v('test_session'));
-  row('Visit Date/Time', v('visit_datetime'));
-  row('RC Initials', v('rc_initials'));
-  row('Recruitment Date', v('recruitment_date'));
-  row('Phone Screening Date', v('phone_screening_date'));
-  row('ICL Sent', v('icl_sent'));
-  row('Forms Reviewed Initials', v('forms_reviewed_initials'));
-
-  // SECTION 1
-  row('Screening RC Initials', v('screening_rc_initials'));
-  row('Eligible', v('eligible'));
-  row('Freezer', v('freezer'));
-  row('Screen Fail Reason', v('screen_fail_reason'));
-  row('Consent Form', v('consent_form'));
-  row('Media Consent', v('media_consent'));
-  row('Future Studies Consent', v('future_studies'));
-  row('Height (cm)', v('height_cm'));
-  row('Weight (lb)', v('weight_lb'));
-  row('Symptom Onset', v('symptom_onset'));
-  row('Formal Diagnosis Date', v('formal_diagnosis_date'));
-  row('Other Medical History', v('other_medical_hx'));
-  row('Fall Events', v('fall_events'));
-  row('Actual Falls #', v('actual_falls'));
-  row('Incidental Falls #', v('incidental_falls'));
-  row('Fall Reported By', v('fall_reported_initials'));
-
-  // Medications
-  for (let i=1; i<=4; i++) {
-    row('Med'+i+' Name', v('med'+i+'_name'));
-    row('Med'+i+' Dose', v('med'+i+'_dose'));
-    row('Med'+i+' Freq', v('med'+i+'_freq'));
-    row('Med'+i+'b Name', v('med'+i+'_name2'));
-    row('Med'+i+'b Dose', v('med'+i+'_dose2'));
-    row('Med'+i+'b Freq', v('med'+i+'_freq2'));
-  }
-
-  // SECTION 2
-  row('Subject Prep Initials', v('subj_prep_initials'));
-  row('Time Since Last Dose', v('time_since_dose'));
-  row('Equivital Size', v('equivital_size'));
-
-  // SECTION 3 - Test OFF
-  row('UPDRS-III Score (OFF)', v('updrs_off_score'));
-  row('UPDRS-III Time (OFF)', v('updrs_off_time'));
-  row('UPDRS-III Initials (OFF)', v('updrs_off_initials'));
-  row('BP OFF R1 Sys', v('bp_off_1_sys'));
-  row('BP OFF R1 Dia', v('bp_off_1_dia'));
-  row('BP OFF R2 Sys', v('bp_off_2_sys'));
-  row('BP OFF R2 Dia', v('bp_off_2_dia'));
-  row('BP OFF R3 Sys', v('bp_off_3_sys'));
-  row('BP OFF R3 Dia', v('bp_off_3_dia'));
-  row('BP OFF Avg Sys', v('bp_off_avg_sys'));
-  row('BP OFF Avg Dia', v('bp_off_avg_dia'));
-  row('Baseline OFF Sitting', v('baseline_off_sitting'));
-  row('Baseline OFF Sitting Notes', v('baseline_off_sitting_notes'));
-  row('Baseline OFF Standing', v('baseline_off_standing'));
-  row('Baseline OFF Standing Notes', v('baseline_off_standing_notes'));
-  row('Baseline OFF Walking', v('baseline_off_walking'));
-  row('Baseline OFF Walking Notes', v('baseline_off_walking_notes'));
-
-  // SECTION 4 - Giladi OFF
-  row('Giladi OFF Doorway', v('giladi_off_doorway'));
-  row('Giladi OFF Initials', v('giladi_off_initials'));
-  row('Giladi OFF Start', v('giladi_off_start'));
-  row('Giladi OFF Walking Aid', v('giladi_off_walking_aid'));
-  const giladiTrials = ['Walk','Dual-Task Walk','Carrying','Turns','Dual-Task Turns','Box Shuffle','Box Agility','Doorway'];
-  for (let i=1; i<=8; i++) {
-    row('Giladi OFF '+giladiTrials[i-1]+' Duration', v('g_off_'+i+'_dur'));
-    row('Giladi OFF '+giladiTrials[i-1]+' Frequency', v('g_off_'+i+'_freq'));
-    row('Giladi OFF '+giladiTrials[i-1]+' Total', v('g_off_'+i+'_total'));
-    row('Giladi OFF '+giladiTrials[i-1]+' Confidence', v('g_off_'+i+'_conf'));
-    row('Giladi OFF '+giladiTrials[i-1]+' Notes', v('g_off_'+i+'_notes'));
-  }
-
-  // SECTION 5 - Test ON
-  row('UPDRS-III Score (ON)', v('updrs_on_score'));
-  row('UPDRS-III Time (ON)', v('updrs_on_time'));
-  row('Test ON Label', v('test_on_label'));
-  row('BP ON R2 Sys', v('bp_on_2_sys'));
-  row('BP ON R2 Dia', v('bp_on_2_dia'));
-  row('BP ON R3 Sys', v('bp_on_3_sys'));
-  row('BP ON R3 Dia', v('bp_on_3_dia'));
-  row('BP ON Avg Sys', v('bp_on_avg_sys'));
-  row('BP ON Avg Dia', v('bp_on_avg_dia'));
-  row('VR Elev/Ground Time 1-5', v('vr_time_1'));
-  row('VR Elev/Ground Time 6-10', v('vr_time_2'));
-
-  // VR Trials
-  const vrTrials = ['B','1','2','3','4','5','6','7','8','9','10'];
-  for (const t of vrTrials) {
-    row('VR Trial '+t+' Code', v('vr_'+t+'_code'));
-    row('VR Trial '+t+' Condition', v('vr_'+t+'_cond'));
-    row('VR Trial '+t+' SAM', v('vr_'+t+'_sam'));
-    row('VR Trial '+t+' Elev/Ground', v('vr_'+t+'_elev'));
-    row('VR Trial '+t+' Comments', v('vr_'+t+'_comments'));
-    if (t !== 'B') row('VR Walk '+t+' Notes', v('vr_'+t+'_walk'));
-  }
-
+  // Prep
+  r('Participant ID',v('participant_id')); r('Test Session',v('test_session')); r('Visit DateTime',v('visit_datetime'));
+  r('RC Initials',v('rc_initials')); r('Recruitment Date',v('recruitment_date')); r('Forms Reviewed Initials',v('forms_reviewed_initials'));
+  r('Phone Screening Date',v('phone_screening_date')); r('ICL Sent',v('icl_sent'));
+  // Screening
+  r('Screening RC Initials',v('screening_rc_initials')); r('Eligible',v('eligible')); r('Freezer',v('freezer')); r('Screen Fail Reason',v('screen_fail_reason'));
+  r('Consent Form',v('consent_form')); r('Media Consent',v('media_consent')); r('Future Studies Consent',v('future_studies'));
+  r('Height (cm)',v('height_cm')); r('Weight (lb)',v('weight_lb')); r('Symptom Onset',v('symptom_onset')); r('Formal Diagnosis Date',v('formal_diagnosis_date'));
+  r('Other Medical Hx',v('other_medical_hx')); r('Fall Events',v('fall_events')); r('Actual Falls',v('actual_falls')); r('Incidental Falls',v('incidental_falls')); r('Falls Reported By',v('fall_reported_initials'));
+  for(let i=1;i<=5;i++){r('Med'+i+' Name',v('med'+i+'_name'));r('Med'+i+' Dose',v('med'+i+'_dose'));r('Med'+i+' Freq',v('med'+i+'_freq'));r('Med'+i+'b Name',v('med'+i+'_name2'));r('Med'+i+'b Dose',v('med'+i+'_dose2'));r('Med'+i+'b Freq',v('med'+i+'_freq2'));}
+  // Test OFF
+  r('Subj Prep Initials',v('subj_prep_initials')); r('Time Since Last Dose',v('time_since_dose')); r('Equivital Size',v('equivital_size'));
+  r('UPDRS-III Score OFF',v('updrs_off_score')); r('UPDRS-III Time OFF',v('updrs_off_time')); r('UPDRS-III Initials OFF',v('updrs_off_initials'));
+  r('BP OFF R1 Sys',v('bp_off_1_sys')); r('BP OFF R1 Dia',v('bp_off_1_dia'));
+  r('BP OFF R2 Sys',v('bp_off_2_sys')); r('BP OFF R2 Dia',v('bp_off_2_dia'));
+  r('BP OFF R3 Sys',v('bp_off_3_sys')); r('BP OFF R3 Dia',v('bp_off_3_dia'));
+  r('BP OFF Avg Sys',v('bp_off_avg_sys')); r('BP OFF Avg Dia',v('bp_off_avg_dia'));
+  r('Baseline OFF Sitting',v('baseline_off_sitting')); r('Baseline OFF Sitting Notes',v('baseline_off_sitting_notes'));
+  r('Baseline OFF Standing',v('baseline_off_standing')); r('Baseline OFF Standing Notes',v('baseline_off_standing_notes'));
+  r('Baseline OFF Walking',v('baseline_off_walking')); r('Baseline OFF Walking Notes',v('baseline_off_walking_notes'));
+  // Giladi OFF
+  r('Giladi OFF Doorway',v('giladi_off_doorway')); r('Giladi OFF Initials',v('giladi_off_initials')); r('Giladi OFF Start',v('giladi_off_start')); r('Giladi OFF Aid',v('giladi_off_aid'));
+  GILADI_TRIALS.forEach((t,i)=>{const n=i+1,name=t.name.replace(/[^a-zA-Z\s]/g,'').trim();
+    if(t.turns) r('Giladi OFF '+name+' Turns',v('g_off_'+n+'_turns'));
+    r('Giladi OFF '+name+' Dur',v('g_off_'+n+'_dur')); r('Giladi OFF '+name+' Freq',v('g_off_'+n+'_freq'));
+    r('Giladi OFF '+name+' Total',v('g_off_'+n+'_total')); r('Giladi OFF '+name+' Conf',v('g_off_'+n+'_conf')); r('Giladi OFF '+name+' Notes',v('g_off_'+n+'_notes'));
+  });
+  // VR OFF
+  r('VR OFF Baseline Sitting',v('vr_off_sitting')); r('VR OFF Baseline Standing',v('vr_off_standing')); r('VR OFF Baseline Walking',v('vr_off_walking'));
+  r('VR OFF Time 1-5',v('vr_off_time_1')); r('VR OFF Time 6-10',v('vr_off_time_2'));
+  ['b','1','2','3','4','5','6','7','8','9','10'].forEach(t=>{
+    r('VR OFF Trial '+t+' Code',v('vr_off_'+t+'_code')); r('VR OFF Trial '+t+' Cond',v('vr_off_'+t+'_cond'));
+    r('VR OFF Trial '+t+' SAM',v('vr_off_'+t+'_sam')); r('VR OFF Trial '+t+' Elev',v('vr_off_'+t+'_elev')); r('VR OFF Trial '+t+' Comments',v('vr_off_'+t+'_comments'));
+    if(t!=='b') r('VR OFF Walk '+t+' Notes',v('vr_off_'+t+'_walk'));
+  });
+  // Med intake
+  r('Med Intake Time',v('med_intake_time')); r('Med Inventory Confirmed',v('med_inventory_confirmed')); r('Q Completed By',v('q_completed_by')); r('Med Break Notes',v('med_notes'));
+  // Test ON
+  r('UPDRS-III Score ON',v('updrs_on_score')); r('UPDRS-III Time ON',v('updrs_on_time')); r('UPDRS-III Initials ON',v('updrs_on_initials'));
+  r('MoCA Score ON',v('moca_on_score')); r('MoCA Time ON',v('moca_on_time')); r('TMT-A secs',v('tmta_on_time')); r('TMT-B secs',v('tmtb_on_time'));
+  r('Baseline ON Inside VR Sitting',v('vr_on_pre_sitting')); r('Baseline ON Inside VR Standing',v('vr_on_pre_standing')); r('Baseline ON Inside VR Walking',v('vr_on_pre_walking'));
+  r('Baseline ON Outside Sitting',v('baseline_on_sitting')); r('Baseline ON Outside Standing',v('baseline_on_standing')); r('Baseline ON Outside Walking',v('baseline_on_walking'));
+  r('BP ON R2 Sys',v('bp_on_2_sys')); r('BP ON R2 Dia',v('bp_on_2_dia')); r('BP ON R3 Sys',v('bp_on_3_sys')); r('BP ON R3 Dia',v('bp_on_3_dia'));
+  r('BP ON Avg Sys',v('bp_on_avg_sys')); r('BP ON Avg Dia',v('bp_on_avg_dia'));
   // Giladi ON
-  row('Giladi ON Doorway', v('giladi_on_doorway'));
-  row('Giladi ON Initials', v('giladi_on_initials'));
-  row('Giladi ON Start', v('giladi_on_start'));
-  row('Giladi ON Walking Aid', v('giladi_on_walking_aid'));
-  for (let i=1; i<=8; i++) {
-    row('Giladi ON '+giladiTrials[i-1]+' Duration', v('g_on_'+i+'_dur'));
-    row('Giladi ON '+giladiTrials[i-1]+' Frequency', v('g_on_'+i+'_freq'));
-    row('Giladi ON '+giladiTrials[i-1]+' Total', v('g_on_'+i+'_total'));
-    row('Giladi ON '+giladiTrials[i-1]+' Confidence', v('g_on_'+i+'_conf'));
-    row('Giladi ON '+giladiTrials[i-1]+' Notes', v('g_on_'+i+'_notes'));
-  }
+  r('Giladi ON Doorway',v('giladi_on_doorway')); r('Giladi ON Initials',v('giladi_on_initials')); r('Giladi ON Start',v('giladi_on_start')); r('Giladi ON Aid',v('giladi_on_aid'));
+  GILADI_TRIALS.forEach((t,i)=>{const n=i+1,name=t.name.replace(/[^a-zA-Z\s]/g,'').trim();
+    if(t.turns) r('Giladi ON '+name+' Turns',v('g_on_'+n+'_turns'));
+    r('Giladi ON '+name+' Dur',v('g_on_'+n+'_dur')); r('Giladi ON '+name+' Freq',v('g_on_'+n+'_freq'));
+    r('Giladi ON '+name+' Total',v('g_on_'+n+'_total')); r('Giladi ON '+name+' Conf',v('g_on_'+n+'_conf')); r('Giladi ON '+name+' Notes',v('g_on_'+n+'_notes'));
+  });
+  // VR ON
+  r('VR ON Baseline Sitting',v('vr_on_sitting')); r('VR ON Baseline Standing',v('vr_on_standing')); r('VR ON Baseline Walking',v('vr_on_walking'));
+  r('VR ON Time 1-5',v('vr_on_time_1')); r('VR ON Time 6-10',v('vr_on_time_2'));
+  ['b','1','2','3','4','5','6','7','8','9','10'].forEach(t=>{
+    r('VR ON Trial '+t+' Code',v('vr_on_'+t+'_code')); r('VR ON Trial '+t+' Cond',v('vr_on_'+t+'_cond'));
+    r('VR ON Trial '+t+' SAM',v('vr_on_'+t+'_sam')); r('VR ON Trial '+t+' Elev',v('vr_on_'+t+'_elev')); r('VR ON Trial '+t+' Comments',v('vr_on_'+t+'_comments'));
+    if(t!=='b') r('VR ON Walk '+t+' Notes',v('vr_on_'+t+'_walk'));
+  });
+  // Data mgmt
+  r('File Name Convention',v('file_name_convention'));
+  ['opals','equivital','updrs','pkmas','moca','tmta','tmtb','sam','clinro','ssq','stai'].forEach(k=>r('Offload '+k.toUpperCase(),v('offload_'+k)));
+  r('Upload Sensors Local',v('upload_sensors_local')); r('Upload Sensors Repo',v('upload_sensors_repo'));
+  r('Upload Video Local',v('upload_video_local')); r('Upload Video Repo',v('upload_video_repo'));
+  r('Upload Paper Local',v('upload_paper_local')); r('Upload Paper Repo',v('upload_paper_repo'));
+  r('Video Blurring',v('video_blurring')); r('Session Notes',v('session_notes'));
 
-  // SECTION 6 - Data
-  row('File Name Convention', v('file_name_convention'));
-  row('Offload OPALS', v('offload_opals'));
-  row('Offload Equivital', v('offload_equivital'));
-  row('Offload UPDRS', v('offload_updrs'));
-  row('Offload PKMAS', v('offload_pkmas'));
-  row('Offload MoCA', v('offload_moca'));
-  row('Offload TMT-A', v('offload_tmta'));
-  row('Offload TMT-B', v('offload_tmtb'));
-  row('Offload SAM', v('offload_sam'));
-  row('Offload CLINRO', v('offload_clinro'));
-  row('Offload SSQ', v('offload_ssq'));
-  row('Offload STAI-S', v('offload_stai'));
-  row('Upload Sensors Local', v('upload_sensors_local'));
-  row('Upload Sensors Repo', v('upload_sensors_repo'));
-  row('Upload Video Local', v('upload_video_local'));
-  row('Upload Video Repo', v('upload_video_repo'));
-  row('Upload Paper Local', v('upload_paper_local'));
-  row('Upload Paper Repo', v('upload_paper_repo'));
-  row('Video Blurring', v('video_blurring'));
-  row('Session Notes', v('session_notes'));
-
-  // Build CSV
-  const pid = v('participant_id') || 'session';
-  const dt = new Date().toISOString().slice(0,10);
-  const csv = 'Field,Value\n' + rows.map(r => '"'+r[0]+'","'+r[1]+'"').join('\n');
-  const blob = new Blob([csv], { type: 'text/csv' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = pid + '_TrialRunSheet_' + dt + '.csv';
-  a.click();
+  const pid=v('participant_id')||'session';
+  const dt=new Date().toISOString().slice(0,10);
+  const csv=rows.map(r=>r.join(',')).join('\n');
+  const blob=new Blob([csv],{type:'text/csv'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a'); a.href=url; a.download=pid+'_TrialRunSheet_'+dt+'.csv'; a.click();
   URL.revokeObjectURL(url);
-  showToast('CSV exported: ' + a.download);
+  showToast('CSV exported: '+a.download);
 }
 
-// ── Clear all ──
+// ── Clear ──
 function clearAll() {
-  if (!confirm('Clear all data in this form?')) return;
-  document.querySelectorAll('input:not([type=checkbox]):not([readonly])').forEach(el => el.value = '');
-  document.querySelectorAll('input[type=checkbox]').forEach(el => el.checked = false);
-  document.querySelectorAll('select').forEach(el => el.value = '');
-  document.querySelectorAll('textarea').forEach(el => el.value = '');
-  document.querySelectorAll('.check-item').forEach(el => el.classList.remove('checked'));
-  document.querySelectorAll('.yn-btn').forEach(el => { el.classList.remove('active-y','active-n'); });
-  document.getElementById('header-info').textContent = 'New session — fill in participant ID to begin';
+  if(!confirm('Clear all data in this form?')) return;
+  document.querySelectorAll('input:not([readonly])').forEach(el=>{if(el.type==='checkbox')el.checked=false;else el.value='';});
+  document.querySelectorAll('select,textarea').forEach(el=>el.value='');
+  document.querySelectorAll('.check-item,.q-item').forEach(el=>el.classList.remove('checked'));
+  document.querySelectorAll('.yn-btn').forEach(el=>el.classList.remove('active-y','active-n'));
+  document.getElementById('header-info').textContent='New session — enter Participant ID to begin';
   showToast('Form cleared');
 }
 
-// ── Toast ──
 function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 3000);
+  const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3000);
 }
 </script>
 </body>
