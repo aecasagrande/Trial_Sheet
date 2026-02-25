@@ -33,7 +33,6 @@
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: var(--sans); background: var(--bg); color: var(--text); font-size: 14px; line-height: 1.5; min-height: 100vh; }
-
   header { background: var(--accent); color: white; padding: 16px 28px; display: flex; align-items: center; justify-content: space-between; gap: 16px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
   header h1 { font-size: 15px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
   header p { font-size: 11px; opacity: 0.7; font-family: var(--mono); margin-top: 2px; }
@@ -43,7 +42,6 @@
   .btn-primary:hover { background: #ddeaf5; }
   .btn-ghost { background: rgba(255,255,255,0.13); color: white; border: 1px solid rgba(255,255,255,0.25); }
   .btn-ghost:hover { background: rgba(255,255,255,0.22); }
-
   .progress-nav { background: white; border-bottom: 2px solid var(--border); padding: 0 28px; display: flex; overflow-x: auto; gap: 0; }
   .nav-tab { font-size: 11px; font-weight: 600; padding: 11px 14px; color: var(--text-muted); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; white-space: nowrap; transition: all 0.15s; font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.03em; display: flex; align-items: center; gap: 6px; }
   .nav-tab:hover { color: var(--accent); }
@@ -55,16 +53,13 @@
   .nav-tab.on-tab.active .tab-dot { background: var(--on-color); }
   .nav-tab.med-tab.active { color: var(--med-color); border-bottom-color: var(--med-color); }
   .nav-tab.med-tab.active .tab-dot { background: var(--med-color); }
-
   .app-body { max-width: 980px; margin: 0 auto; padding: 28px 20px 80px; }
   .section { display: none; }
   .section.active { display: block; }
-
   .phase-banner { display: flex; align-items: center; gap: 12px; padding: 10px 16px; border-radius: 5px; margin-bottom: 18px; font-size: 12px; font-weight: 600; font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.05em; }
   .phase-banner.off { background: var(--off-bg); color: var(--off-color); border: 1px solid #b8d0e8; }
   .phase-banner.on { background: var(--on-bg); color: var(--on-color); border: 1px solid #b0d8a8; }
   .phase-banner.med { background: var(--med-bg); color: var(--med-color); border: 1px solid #d8b0e8; }
-
   .card { background: var(--panel); border: 1px solid var(--border); border-radius: 6px; box-shadow: var(--shadow); margin-bottom: 16px; overflow: hidden; }
   .card-header { padding: 9px 16px; font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; font-family: var(--mono); display: flex; justify-content: space-between; align-items: center; }
   .card-header.blue { background: var(--accent); color: white; }
@@ -73,7 +68,6 @@
   .card-header.med { background: var(--med-bg); color: var(--med-color); border-bottom: 1px solid #d8b0e8; }
   .card-header.neutral { background: #f2f0ec; color: var(--text-dim); border-bottom: 1px solid var(--border); }
   .card-body { padding: 16px; }
-
   .form-row { display: grid; gap: 12px; margin-bottom: 12px; }
   .form-row.cols-2 { grid-template-columns: 1fr 1fr; }
   .form-row.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
@@ -83,7 +77,6 @@
   .field input, .field textarea, .field select { font-family: var(--sans); font-size: 13px; color: var(--text); background: #fafaf9; border: 1px solid var(--border); border-radius: var(--radius); padding: 6px 9px; transition: border-color 0.15s; width: 100%; }
   .field input:focus, .field textarea:focus, .field select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(26,74,107,0.07); background: white; }
   .field textarea { resize: vertical; min-height: 56px; }
-
   .checklist { display: flex; flex-direction: column; gap: 5px; }
   .check-item { display: flex; align-items: flex-start; gap: 9px; padding: 6px 9px; border-radius: var(--radius); border: 1px solid transparent; cursor: pointer; transition: all 0.12s; }
   .check-item:hover { background: var(--accent-light); border-color: var(--border); }
@@ -91,7 +84,6 @@
   .check-item span { font-size: 13px; line-height: 1.4; }
   .check-item.checked { background: var(--green-bg); border-color: #a8d8bc; }
   .check-item.checked span { color: var(--green); }
-
   .consent-row { display: flex; align-items: center; gap: 10px; padding: 8px 10px; background: #fafaf9; border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 7px; }
   .consent-label { flex: 1; font-size: 13px; }
   .yn-group { display: flex; gap: 4px; }
@@ -99,13 +91,30 @@
   .yn-btn.active-y { background: var(--green-bg); border-color: #a8d8bc; color: var(--green); }
   .yn-btn.active-n { background: #fde8e4; border-color: #f4b8ae; color: var(--accent2); }
 
+  /* ── Medication Table with Dropdown ── */
   .med-table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
   .med-table th { background: var(--accent-light); color: var(--accent); font-size: 10.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; font-family: var(--mono); padding: 6px 9px; text-align: left; border-bottom: 1px solid var(--border); }
-  .med-table td { border-bottom: 1px solid var(--border); padding: 3px; }
+  .med-table td { border-bottom: 1px solid var(--border); padding: 3px; vertical-align: middle; }
   .med-table tr:last-child td { border-bottom: none; }
-  .med-table input { font-family: var(--sans); font-size: 12.5px; border: 1px solid transparent; background: transparent; padding: 4px 7px; width: 100%; border-radius: 3px; }
-  .med-table input:focus { outline: none; background: white; border-color: var(--accent); }
+  .med-table input, .med-table select { font-family: var(--sans); font-size: 12.5px; border: 1px solid transparent; background: transparent; padding: 4px 7px; width: 100%; border-radius: 3px; }
+  .med-table input:focus, .med-table select:focus { outline: none; background: white; border-color: var(--accent); }
   .med-table tr:nth-child(even) { background: #fafaf9; }
+  .med-name-cell { position: relative; }
+  .med-name-wrapper { display: flex; gap: 3px; align-items: center; }
+  .med-name-wrapper input { flex: 1; }
+  .med-lookup-btn { background: var(--accent-light); border: 1px solid var(--border) !important; border-radius: 3px; padding: 3px 6px !important; font-size: 11px !important; color: var(--accent) !important; cursor: pointer; white-space: nowrap; width: auto !important; flex-shrink: 0; font-weight: 600; }
+  .med-lookup-btn:hover { background: var(--accent); color: white !important; }
+  .med-dropdown-panel { display: none; position: absolute; top: 100%; left: 0; z-index: 200; background: white; border: 1px solid var(--border); border-radius: 6px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); min-width: 420px; max-height: 360px; overflow-y: auto; }
+  .med-dropdown-panel.open { display: block; }
+  .med-cat-header { background: var(--accent); color: white; padding: 5px 10px; font-size: 10px; font-weight: 600; font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.05em; cursor: default; top: 0; position: sticky; }
+  .med-cat-subheader { background: #f2f0ec; color: var(--text-dim); padding: 4px 10px; font-size: 9.5px; font-weight: 600; font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.04em; border-bottom: 1px solid var(--border); }
+  .med-option { padding: 6px 12px; cursor: pointer; display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: center; border-bottom: 1px solid #f0ede8; }
+  .med-option:hover, .med-option.highlighted { background: var(--accent-light); }
+  .med-option-name { font-size: 12.5px; font-weight: 500; color: var(--text); }
+  .med-option-brand { font-size: 11px; color: var(--text-muted); font-family: var(--mono); }
+  .med-option-detail { font-size: 10.5px; color: var(--text-dim); font-family: var(--mono); text-align: right; line-height: 1.4; }
+  .med-option mark { background: #fff0a0; color: var(--text); border-radius: 2px; padding: 0 1px; font-style: normal; }
+  .med-ac-empty { padding: 10px 14px; font-size: 12px; color: var(--text-muted); font-family: var(--mono); font-style: italic; }
 
   .bp-table { width: 100%; border-collapse: collapse; font-size: 13px; }
   .bp-table th { font-size: 10.5px; font-weight: 600; color: var(--text-dim); font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.04em; padding: 6px 9px; border-bottom: 1px solid var(--border); text-align: left; }
@@ -117,7 +126,6 @@
   .bp-table .avg-row input { background: var(--accent-light); font-weight: 600; }
   .bp-table .discard-row { opacity: 0.55; }
   .row-label { font-size: 11.5px; font-family: var(--mono); color: var(--text-dim); white-space: nowrap; padding: 0 8px !important; }
-
   .giladi-table { width: 100%; border-collapse: collapse; font-size: 13px; }
   .giladi-table th { font-size: 10.5px; font-weight: 600; color: var(--text-dim); font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.03em; padding: 6px 9px; border-bottom: 1px solid var(--border); background: #f7f5f2; text-align: left; }
   .giladi-table td { padding: 4px 5px; border-bottom: 1px solid var(--border); vertical-align: middle; }
@@ -127,7 +135,6 @@
   .trial-label { font-weight: 500; color: var(--text); font-size: 13px; padding-left: 8px !important; }
   .giladi-table input[readonly] { background: #ede8f7; color: #5a3a7a; font-weight: 600; }
   .turns-note { font-size: 10.5px; color: var(--text-muted); display: block; font-family: var(--mono); }
-
   .vr-table { width: 100%; border-collapse: collapse; font-size: 13px; }
   .vr-table th { font-size: 10.5px; font-weight: 600; font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.03em; padding: 7px 9px; border-bottom: 2px solid var(--border); background: var(--accent); color: white; text-align: left; }
   .vr-table td { padding: 4px 6px; border-bottom: 1px solid var(--border); vertical-align: middle; }
@@ -138,25 +145,26 @@
   .vr-divider td { background: var(--accent-light); color: var(--accent); font-size: 10.5px; font-family: var(--mono); font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; padding: 5px 9px; border-top: 1px solid #b8d0e8; }
   .walk-row td { background: #f7f7f5 !important; }
   .walk-row input { background: #f7f7f5 !important; font-size: 12px !important; color: var(--text-dim) !important; }
+  /* SAM cells in VR table */
+  .sam-cell-pair { display: flex; flex-direction: column; gap: 2px; }
+  .sam-cell-pair input { font-size: 11.5px; padding: 3px 5px; }
+  .sam-label-tiny { font-size: 9px; font-family: var(--mono); color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; line-height: 1; }
 
   .q-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
   .q-item { display: flex; align-items: center; gap: 6px; font-size: 12.5px; font-family: var(--mono); cursor: pointer; padding: 4px 10px; border: 1px solid var(--border); border-radius: var(--radius); background: white; transition: all 0.12s; }
   .q-item:hover { background: var(--accent-light); }
   .q-item input { accent-color: var(--accent); width: 14px; height: 14px; }
   .q-item.checked { background: var(--green-bg); border-color: #a8d8bc; color: var(--green); }
-
   .offload-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; }
   .offload-item { border: 1px solid var(--border); border-radius: var(--radius); padding: 8px 10px; background: #fafaf9; }
   .offload-item label { font-size: 10.5px; font-weight: 600; font-family: var(--mono); color: var(--text-dim); text-transform: uppercase; display: block; margin-bottom: 4px; }
   .offload-check { display: flex; align-items: center; gap: 5px; font-size: 12px; color: var(--text-dim); cursor: pointer; }
   .offload-check input { accent-color: var(--green); }
-
   .upload-table { width: 100%; border-collapse: collapse; font-size: 13px; }
   .upload-table th { font-size: 10.5px; font-weight: 600; font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.03em; padding: 6px 9px; border-bottom: 1px solid var(--border); background: #f7f5f2; text-align: left; color: var(--text-dim); }
   .upload-table td { padding: 4px 7px; border-bottom: 1px solid var(--border); }
   .upload-table input { font-family: var(--mono); font-size: 12px; border: 1px solid var(--border); border-radius: 3px; padding: 4px 7px; width: 100%; background: white; }
   .upload-table input:focus { outline: none; border-color: var(--accent); }
-
   .assess-table { width: 100%; border-collapse: collapse; font-size: 13px; }
   .assess-table th { font-size: 10.5px; font-weight: 600; font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.03em; padding: 6px 9px; border-bottom: 1px solid var(--border); background: #f7f5f2; text-align: left; color: var(--text-dim); }
   .assess-table td { padding: 5px 7px; border-bottom: 1px solid var(--border); vertical-align: middle; }
@@ -164,26 +172,20 @@
   .assess-table .notes-input { border: 1px solid var(--border); border-radius: 3px; padding: 4px 7px; width: 100%; font-family: var(--sans); font-size: 12.5px; }
   .assess-table .notes-input:focus { outline: none; border-color: var(--accent); }
   .done-check { accent-color: var(--green); width: 16px; height: 16px; }
-
   .info-box { background: var(--warn-bg); border: 1px solid #f0dca0; border-radius: var(--radius); padding: 9px 13px; font-size: 12.5px; color: var(--warn); line-height: 1.6; margin-bottom: 12px; }
-
   .timer-block { background: var(--med-bg); border: 1px solid #d8b0e8; border-radius: 6px; padding: 14px 16px; margin-bottom: 16px; display: flex; align-items: center; gap: 14px; }
   .timer-block .timer-icon { font-size: 22px; }
   .timer-block h3 { font-size: 13px; font-weight: 600; color: var(--med-color); font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.04em; }
   .timer-block p { font-size: 12.5px; color: var(--med-color); opacity: 0.85; margin-top: 2px; }
-
   .section-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--border); }
   .btn-nav { font-family: var(--sans); font-size: 13px; font-weight: 500; padding: 8px 18px; border-radius: var(--radius); border: 1px solid var(--border); cursor: pointer; background: white; color: var(--text); transition: all 0.15s; display: inline-flex; align-items: center; gap: 6px; }
   .btn-nav:hover { background: var(--accent-light); border-color: var(--accent); color: var(--accent); }
   .btn-nav.next { background: var(--accent); color: white; border-color: var(--accent); }
   .btn-nav.next:hover { background: #153c58; }
-
   .divider { height: 1px; background: var(--border); margin: 14px 0; }
   .section-label { font-size: 10.5px; font-weight: 600; font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: 8px; }
-
   .toast { position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%) translateY(16px); background: var(--accent); color: white; padding: 9px 18px; border-radius: 5px; font-size: 13px; font-weight: 500; opacity: 0; transition: all 0.3s; pointer-events: none; z-index: 999; white-space: nowrap; box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-
   @media (max-width: 660px) {
     .form-row.cols-2, .form-row.cols-3, .form-row.cols-4 { grid-template-columns: 1fr; }
     .offload-grid { grid-template-columns: repeat(2,1fr); }
@@ -193,7 +195,6 @@
 </style>
 </head>
 <body>
-
 <header>
   <div>
     <h1>PD / HRV Trial Run Sheet</h1>
@@ -204,7 +205,6 @@
     <button class="btn btn-primary" onclick="exportCSV()">↓ Export CSV</button>
   </div>
 </header>
-
 <nav class="progress-nav">
   <div class="nav-tab active" onclick="goTo(0)" id="tab-0"><span class="tab-dot"></span>Prep</div>
   <div class="nav-tab" onclick="goTo(1)" id="tab-1"><span class="tab-dot"></span>Screening</div>
@@ -217,7 +217,6 @@
   <div class="nav-tab on-tab" onclick="goTo(8)" id="tab-8"><span class="tab-dot"></span>VR Trials ON</div>
   <div class="nav-tab" onclick="goTo(9)" id="tab-9"><span class="tab-dot"></span>Data Mgmt</div>
 </nav>
-
 <div class="app-body">
 
 <!-- ══ 0: PREP ══ -->
@@ -313,15 +312,10 @@
     <div class="card-header neutral">Medications (All Meds)</div>
     <div class="card-body">
       <table class="med-table">
-        <thead><tr><th>Medication Name</th><th>Dose (unit)</th><th>Frequency</th><th>Med. Name</th><th>Dose</th><th>Frequency</th></tr></thead>
-        <tbody>
-          <tr><td><input type="text" id="med1_name" placeholder="Med name"></td><td><input type="text" id="med1_dose"></td><td><input type="text" id="med1_freq"></td><td><input type="text" id="med1_name2"></td><td><input type="text" id="med1_dose2"></td><td><input type="text" id="med1_freq2"></td></tr>
-          <tr><td><input type="text" id="med2_name"></td><td><input type="text" id="med2_dose"></td><td><input type="text" id="med2_freq"></td><td><input type="text" id="med2_name2"></td><td><input type="text" id="med2_dose2"></td><td><input type="text" id="med2_freq2"></td></tr>
-          <tr><td><input type="text" id="med3_name"></td><td><input type="text" id="med3_dose"></td><td><input type="text" id="med3_freq"></td><td><input type="text" id="med3_name2"></td><td><input type="text" id="med3_dose2"></td><td><input type="text" id="med3_freq2"></td></tr>
-          <tr><td><input type="text" id="med4_name"></td><td><input type="text" id="med4_dose"></td><td><input type="text" id="med4_freq"></td><td><input type="text" id="med4_name2"></td><td><input type="text" id="med4_dose2"></td><td><input type="text" id="med4_freq2"></td></tr>
-          <tr><td><input type="text" id="med5_name"></td><td><input type="text" id="med5_dose"></td><td><input type="text" id="med5_freq"></td><td><input type="text" id="med5_name2"></td><td><input type="text" id="med5_dose2"></td><td><input type="text" id="med5_freq2"></td></tr>
-        </tbody>
+        <thead><tr><th style="width:28%">Medication Name</th><th style="width:14%">Dose (unit)</th><th style="width:12%">Frequency</th><th style="width:28%">Med. Name</th><th style="width:10%">Dose</th><th style="width:8%">Frequency</th></tr></thead>
+        <tbody id="med-tbody"></tbody>
       </table>
+      <p style="font-size:11px;color:var(--text-muted);margin-top:6px;font-family:var(--mono)">▸ Click the <strong>Rx</strong> button to pick from common PD / other medication categories.</p>
     </div>
   </div>
   <div class="section-footer"><button class="btn-nav" onclick="goTo(0)">← Prep</button><button class="btn-nav next" onclick="goTo(2)">Test-OFF →</button></div>
@@ -421,12 +415,16 @@
 <!-- ══ 4: VR TRIALS OFF ══ -->
 <div class="section" id="sec-4">
   <div class="phase-banner off">🥽 VR Walking Assessment — OFF State</div>
+
+  <!-- Pre-VR Questionnaires -->
   <div class="card">
-    <div class="card-header off">Pre-VR: STAI-State-1 + SSQ</div>
-    <div class="card-body"><div class="q-row"><label class="q-item"><input type="checkbox" onchange="toggleQItem(this)"> STAI-State-1</label><label class="q-item"><input type="checkbox" onchange="toggleQItem(this)"> SSQ</label></div></div>
+    <div class="card-header off">Pre-VR: STAI-State + SSQ</div>
+    <div class="card-body"><div class="q-row"><label class="q-item"><input type="checkbox" onchange="toggleQItem(this)"> STAI-State (Pre)</label><label class="q-item"><input type="checkbox" onchange="toggleQItem(this)"> SSQ (Pre)</label></div></div>
   </div>
+
+  <!-- Baseline Inside VR immediately before trials -->
   <div class="card">
-    <div class="card-header off">Baseline Inside VR — OFF (2-min)</div>
+    <div class="card-header off">Baseline Inside VR — OFF (2-min) <small style="opacity:0.7;font-weight:400;font-size:10px;margin-left:8px;text-transform:none">Complete immediately before trials</small></div>
     <div class="card-body">
       <table class="assess-table">
         <thead><tr><th>Assessment</th><th style="width:60px">Done</th><th>Notes</th></tr></thead>
@@ -438,14 +436,19 @@
       </table>
     </div>
   </div>
+
+  <!-- VR Trials -->
   <div class="card">
     <div class="card-header off">OFF Walking Assessment — Trials 1–10 <small style="opacity:0.7;font-size:10px;margin-left:8px">★ Min 3 good trials</small></div>
     <div class="card-body" id="vr-off-container"></div>
   </div>
+
+  <!-- Post-VR SSQ only -->
   <div class="card">
-    <div class="card-header off">Post-VR: STAI-State-2 + SSQ</div>
-    <div class="card-body"><div class="q-row"><label class="q-item"><input type="checkbox" onchange="toggleQItem(this)"> STAI-State-2</label><label class="q-item"><input type="checkbox" onchange="toggleQItem(this)"> SSQ</label></div></div>
+    <div class="card-header off">Post-VR: SSQ</div>
+    <div class="card-body"><div class="q-row"><label class="q-item"><input type="checkbox" onchange="toggleQItem(this)"> SSQ (Post)</label></div></div>
   </div>
+
   <div class="section-footer"><button class="btn-nav" onclick="goTo(3)">← Giladi OFF</button><button class="btn-nav" style="background:var(--med-color);color:white;border-color:var(--med-color)" onclick="goTo(5)">Medication Intake →</button></div>
 </div>
 
@@ -524,19 +527,6 @@
     </div>
   </div>
   <div class="card">
-    <div class="card-header on">Baseline Inside VR — ON (2-min)</div>
-    <div class="card-body">
-      <table class="assess-table">
-        <thead><tr><th>Assessment</th><th style="width:60px">Done</th><th>Notes</th></tr></thead>
-        <tbody>
-          <tr><td>2-min quiet <strong>SITTING</strong> (backrest + arm rests)</td><td><input type="checkbox" class="done-check" id="vr_on_pre_sitting"></td><td><input class="notes-input" type="text" id="vr_on_pre_sitting_notes"></td></tr>
-          <tr><td>2-min quiet <strong>STANDING</strong></td><td><input type="checkbox" class="done-check" id="vr_on_pre_standing"></td><td><input class="notes-input" type="text" id="vr_on_pre_standing_notes"></td></tr>
-          <tr><td>2-min quiet <strong>WALKING</strong></td><td><input type="checkbox" class="done-check" id="vr_on_pre_walking"></td><td><input class="notes-input" type="text" id="vr_on_pre_walking_notes"></td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <div class="card">
     <div class="card-header on">Baseline Outside VR — ON (5-min)</div>
     <div class="card-body">
       <table class="assess-table">
@@ -601,12 +591,16 @@
 <!-- ══ 8: VR TRIALS ON ══ -->
 <div class="section" id="sec-8">
   <div class="phase-banner on">🥽 VR Walking Assessment — ON State</div>
+
+  <!-- Pre-VR Questionnaires -->
   <div class="card">
-    <div class="card-header on">Pre-VR: STAI-State-3 + SSQ</div>
-    <div class="card-body"><div class="q-row"><label class="q-item"><input type="checkbox" onchange="toggleQItem(this)"> STAI-State-3</label><label class="q-item"><input type="checkbox" onchange="toggleQItem(this)"> SSQ</label></div></div>
+    <div class="card-header on">Pre-VR: STAI-State + SSQ</div>
+    <div class="card-body"><div class="q-row"><label class="q-item"><input type="checkbox" onchange="toggleQItem(this)"> STAI-State (Pre)</label><label class="q-item"><input type="checkbox" onchange="toggleQItem(this)"> SSQ (Pre)</label></div></div>
   </div>
+
+  <!-- Baseline Inside VR immediately before trials -->
   <div class="card">
-    <div class="card-header on">Baseline Inside VR — ON (2-min)</div>
+    <div class="card-header on">Baseline Inside VR — ON (2-min) <small style="opacity:0.7;font-weight:400;font-size:10px;margin-left:8px;text-transform:none">Complete immediately before trials</small></div>
     <div class="card-body">
       <table class="assess-table">
         <thead><tr><th>Assessment</th><th style="width:60px">Done</th><th>Notes</th></tr></thead>
@@ -618,14 +612,19 @@
       </table>
     </div>
   </div>
+
+  <!-- VR Trials -->
   <div class="card">
     <div class="card-header on">ON Walking Assessment — Trials 1–10 <small style="opacity:0.7;font-size:10px;margin-left:8px">★ Min 3 good trials</small></div>
     <div class="card-body" id="vr-on-container"></div>
   </div>
+
+  <!-- Post-VR SSQ only -->
   <div class="card">
-    <div class="card-header on">Post-VR: STAI-State-4 + SSQ</div>
-    <div class="card-body"><div class="q-row"><label class="q-item"><input type="checkbox" onchange="toggleQItem(this)"> STAI-State-4</label><label class="q-item"><input type="checkbox" onchange="toggleQItem(this)"> SSQ</label></div></div>
+    <div class="card-header on">Post-VR: SSQ</div>
+    <div class="card-body"><div class="q-row"><label class="q-item"><input type="checkbox" onchange="toggleQItem(this)"> SSQ (Post)</label></div></div>
   </div>
+
   <div class="section-footer"><button class="btn-nav" onclick="goTo(7)">← Giladi ON</button><button class="btn-nav next" onclick="goTo(9)">Data Management →</button></div>
 </div>
 
@@ -647,7 +646,7 @@
         <div class="offload-item"><label>SAM</label><label class="offload-check"><input type="checkbox" id="offload_sam"> Done</label></div>
         <div class="offload-item"><label>CLINRO</label><label class="offload-check"><input type="checkbox" id="offload_clinro"> Done</label></div>
         <div class="offload-item"><label>SSQ</label><label class="offload-check"><input type="checkbox" id="offload_ssq"> Done</label></div>
-        <div class="offload-item"><label>STAI-S (1–4)</label><label class="offload-check"><input type="checkbox" id="offload_stai"> Done</label></div>
+        <div class="offload-item"><label>STAI-S (Pre x2)</label><label class="offload-check"><input type="checkbox" id="offload_stai"> Done</label></div>
       </div>
     </div>
   </div>
@@ -676,6 +675,264 @@
 <div class="toast" id="toast"></div>
 
 <script>
+// ══════════════════════════════════════════════
+// MEDICATION DATABASE
+// ══════════════════════════════════════════════
+const MED_DB = {
+  "PD — Levodopa Formulations": [
+    { generic: "Levodopa/Carbidopa (IR)", brand: "Sinemet", doses: "100/25, 250/25 mg", freq: "3–6×/day" },
+    { generic: "Levodopa/Carbidopa (ER/CR)", brand: "Sinemet CR", doses: "100/25, 200/50 mg", freq: "2–4×/day" },
+    { generic: "Levodopa/Carbidopa (Extended)", brand: "Rytary", doses: "95/23.75–245/61.25 mg", freq: "3×/day" },
+    { generic: "Levodopa/Carbidopa (Extended)", brand: "Crexont", doses: "140/35–350/87.5 mg", freq: "2–3×/day" },
+    { generic: "Inhaled Levodopa", brand: "Inbrija", doses: "42 mg", freq: "PRN (OFF periods)" },
+  ],
+  "PD — Dopamine Agonists": [
+    { generic: "Pramipexole", brand: "Mirapex", doses: "0.125–1.5 mg", freq: "3×/day" },
+    { generic: "Pramipexole (ER)", brand: "Mirapex ER", doses: "0.375–4.5 mg", freq: "Once daily" },
+    { generic: "Ropinirole", brand: "Requip", doses: "0.25–5 mg", freq: "3×/day" },
+    { generic: "Ropinirole (XL)", brand: "Requip XL", doses: "2–12 mg", freq: "Once daily" },
+    { generic: "Rotigotine (Patch)", brand: "Neupro", doses: "2, 4, 6, 8 mg patch", freq: "1 patch every 24h" },
+    { generic: "Apomorphine", brand: "Apokyn / Kynmobi", doses: "2–6 mg injection/film", freq: "PRN (OFF periods)" },
+  ],
+  "PD — MAO-B Inhibitors": [
+    { generic: "Selegiline", brand: "Eldepryl / Zelapar", doses: "5–10 mg", freq: "1–2×/day" },
+    { generic: "Rasagiline", brand: "Azilect", doses: "0.5–1 mg", freq: "Once daily" },
+    { generic: "Safinamide", brand: "Xadago", doses: "50–100 mg", freq: "Once daily" },
+  ],
+  "PD — COMT Inhibitors": [
+    { generic: "Entacapone", brand: "Comtan", doses: "200 mg", freq: "With each L-DOPA dose" },
+    { generic: "Tolcapone", brand: "Tasmar", doses: "100–200 mg", freq: "3×/day" },
+    { generic: "Opicapone", brand: "Ongentys", doses: "25–50 mg", freq: "Once daily (bedtime)" },
+  ],
+  "PD — Combination Formulations": [
+    { generic: "Levodopa/Carbidopa/Entacapone", brand: "Stalevo", doses: "50/12.5/200–200/50/200 mg", freq: "With each L-DOPA dose" },
+  ],
+  "PD — Other PD Agents": [
+    { generic: "Amantadine", brand: "Symmetrel / Gocovri", doses: "100–274 mg", freq: "1–2×/day" },
+    { generic: "Trihexyphenidyl", brand: "Artane", doses: "1–5 mg", freq: "3×/day" },
+    { generic: "Benztropine", brand: "Cogentin", doses: "0.5–2 mg", freq: "1–2×/day" },
+  ],
+  "Cardiovascular — Antihypertensives": [
+    { generic: "Amlodipine", brand: "Norvasc", doses: "5–10 mg", freq: "Once daily" },
+    { generic: "Ramipril", brand: "Altace", doses: "2.5–10 mg", freq: "Once daily" },
+    { generic: "Lisinopril", brand: "Prinivil / Zestril", doses: "5–40 mg", freq: "Once daily" },
+    { generic: "Metoprolol", brand: "Lopressor / Toprol XL", doses: "25–200 mg", freq: "1–2×/day" },
+    { generic: "Atenolol", brand: "Tenormin", doses: "25–100 mg", freq: "Once daily" },
+    { generic: "Hydrochlorothiazide", brand: "Microzide", doses: "12.5–25 mg", freq: "Once daily" },
+    { generic: "Furosemide", brand: "Lasix", doses: "20–80 mg", freq: "1–2×/day" },
+  ],
+  "Cardiovascular — Cholesterol": [
+    { generic: "Atorvastatin", brand: "Lipitor", doses: "10–80 mg", freq: "Once daily" },
+    { generic: "Rosuvastatin", brand: "Crestor", doses: "5–40 mg", freq: "Once daily" },
+    { generic: "Simvastatin", brand: "Zocor", doses: "10–40 mg", freq: "Once daily (evening)" },
+    { generic: "Ezetimibe", brand: "Zetia", doses: "10 mg", freq: "Once daily" },
+  ],
+  "Psychiatry — Antidepressants": [
+    { generic: "Sertraline", brand: "Zoloft", doses: "50–200 mg", freq: "Once daily" },
+    { generic: "Escitalopram", brand: "Lexapro / Cipralex", doses: "5–20 mg", freq: "Once daily" },
+    { generic: "Venlafaxine", brand: "Effexor XR", doses: "37.5–225 mg", freq: "Once daily" },
+    { generic: "Duloxetine", brand: "Cymbalta", doses: "30–120 mg", freq: "Once daily" },
+    { generic: "Nortriptyline", brand: "Pamelor", doses: "10–75 mg", freq: "Once daily (night)" },
+    { generic: "Mirtazapine", brand: "Remeron", doses: "7.5–45 mg", freq: "Once daily (night)" },
+    { generic: "Bupropion", brand: "Wellbutrin XL", doses: "150–300 mg", freq: "Once daily" },
+  ],
+  "Psychiatry — Anxiolytics / Sleep": [
+    { generic: "Clonazepam", brand: "Rivotril / Klonopin", doses: "0.25–2 mg", freq: "1–3×/day" },
+    { generic: "Lorazepam", brand: "Ativan", doses: "0.5–2 mg", freq: "1–3×/day PRN" },
+    { generic: "Melatonin", brand: "Various", doses: "0.5–10 mg", freq: "Once daily (bedtime)" },
+    { generic: "Quetiapine", brand: "Seroquel", doses: "12.5–100 mg", freq: "Once daily (night)" },
+  ],
+  "Bone / Metabolic": [
+    { generic: "Vitamin D3", brand: "Various", doses: "1000–4000 IU", freq: "Once daily" },
+    { generic: "Calcium Carbonate", brand: "Tums / Caltrate", doses: "500–1200 mg elemental Ca", freq: "1–2×/day with food" },
+    { generic: "Alendronate", brand: "Fosamax", doses: "70 mg", freq: "Once weekly" },
+  ],
+  "Diabetes": [
+    { generic: "Metformin", brand: "Glucophage", doses: "500–2000 mg", freq: "2–3×/day with meals" },
+    { generic: "Sitagliptin", brand: "Januvia", doses: "100 mg", freq: "Once daily" },
+  ],
+  "GI / Other": [
+    { generic: "Omeprazole", brand: "Prilosec", doses: "20–40 mg", freq: "Once daily (before meal)" },
+    { generic: "Pantoprazole", brand: "Tecta / Protonix", doses: "20–40 mg", freq: "Once daily" },
+    { generic: "Domperidone", brand: "Motilium", doses: "10 mg", freq: "3×/day before meals" },
+  ],
+};
+
+// ══ Flatten MED_DB into searchable list ══
+const MED_FLAT = [];
+for (const [cat, meds] of Object.entries(MED_DB)) {
+  meds.forEach(m => MED_FLAT.push({ ...m, cat }));
+}
+
+// ══ Build medication table rows ══
+function buildMedRows() {
+  const tbody = document.getElementById('med-tbody');
+  for (let i = 1; i <= 5; i++) {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td class="med-name-cell">
+        <div class="med-name-wrapper">
+          <input type="text" id="med${i}_name" placeholder="Type to search or browse Rx…"
+            autocomplete="off"
+            oninput="onMedInput(this,${i},'a')"
+            onkeydown="onMedKey(event,${i},'a')"
+            onfocus="onMedInput(this,${i},'a')">
+          <button class="med-lookup-btn" onclick="toggleMedBrowse(${i},'a',event)">Rx</button>
+        </div>
+        <div class="med-dropdown-panel" id="med-drop-${i}-a"></div>
+      </td>
+      <td><input type="text" id="med${i}_dose"></td>
+      <td><input type="text" id="med${i}_freq"></td>
+      <td class="med-name-cell">
+        <div class="med-name-wrapper">
+          <input type="text" id="med${i}_name2" placeholder="Type to search or browse Rx…"
+            autocomplete="off"
+            oninput="onMedInput(this,${i},'b')"
+            onkeydown="onMedKey(event,${i},'b')"
+            onfocus="onMedInput(this,${i},'b')">
+          <button class="med-lookup-btn" onclick="toggleMedBrowse(${i},'b',event)">Rx</button>
+        </div>
+        <div class="med-dropdown-panel" id="med-drop-${i}-b"></div>
+      </td>
+      <td><input type="text" id="med${i}_dose2"></td>
+      <td><input type="text" id="med${i}_freq2"></td>`;
+    tbody.appendChild(tr);
+  }
+}
+
+// highlight matching substring
+function highlight(text, query) {
+  if (!query) return text;
+  const idx = text.toLowerCase().indexOf(query.toLowerCase());
+  if (idx === -1) return text;
+  return text.slice(0, idx) + '<mark>' + text.slice(idx, idx + query.length) + '</mark>' + text.slice(idx + query.length);
+}
+
+// render autocomplete results into panel
+function renderMedOptions(panel, matches, query, row, col) {
+  if (matches.length === 0) {
+    panel.innerHTML = `<div class="med-ac-empty">No matches for "${query}"</div>`;
+    return;
+  }
+  // group by category
+  const groups = {};
+  matches.forEach(m => {
+    if (!groups[m.cat]) groups[m.cat] = [];
+    groups[m.cat].push(m);
+  });
+  let html = '';
+  for (const [cat, meds] of Object.entries(groups)) {
+    html += `<div class="med-cat-header">${cat}</div>`;
+    meds.forEach((m, idx) => {
+      const ge = highlight(m.generic, query);
+      const br = highlight(m.brand, query);
+      html += `<div class="med-option" data-idx="${idx}"
+        onmousedown="selectMed(${row},'${col}','${m.generic.replace(/'/g,"\\'")}','${m.doses.replace(/'/g,"\\'")}','${m.freq.replace(/'/g,"\\'")}')">
+        <div>
+          <div class="med-option-name">${ge}</div>
+          <div class="med-option-brand">${br}</div>
+        </div>
+        <div class="med-option-detail">${m.doses}<br>${m.freq}</div>
+      </div>`;
+    });
+  }
+  panel.innerHTML = html;
+}
+
+// full browse (Rx button) — show all grouped
+function buildMedBrowseContent(panel, row, col) {
+  let html = '';
+  for (const [cat, meds] of Object.entries(MED_DB)) {
+    html += `<div class="med-cat-header">${cat}</div>`;
+    meds.forEach(m => {
+      html += `<div class="med-option"
+        onmousedown="selectMed(${row},'${col}','${m.generic.replace(/'/g,"\\'")}','${m.doses.replace(/'/g,"\\'")}','${m.freq.replace(/'/g,"\\'")}')">
+        <div>
+          <div class="med-option-name">${m.generic}</div>
+          <div class="med-option-brand">${m.brand}</div>
+        </div>
+        <div class="med-option-detail">${m.doses}<br>${m.freq}</div>
+      </div>`;
+    });
+  }
+  panel.innerHTML = html;
+}
+
+function onMedInput(input, row, col) {
+  const panel = document.getElementById(`med-drop-${row}-${col}`);
+  const q = input.value.trim();
+  closeAllMedPanels(panel);
+  if (q.length === 0) {
+    // show full browse when field is empty and focused
+    buildMedBrowseContent(panel, row, col);
+  } else {
+    const matches = MED_FLAT.filter(m =>
+      m.generic.toLowerCase().includes(q.toLowerCase()) ||
+      m.brand.toLowerCase().includes(q.toLowerCase())
+    );
+    renderMedOptions(panel, matches, q, row, col);
+  }
+  panel.classList.add('open');
+}
+
+function toggleMedBrowse(row, col, event) {
+  event.stopPropagation();
+  const panel = document.getElementById(`med-drop-${row}-${col}`);
+  const isOpen = panel.classList.contains('open');
+  closeAllMedPanels();
+  if (!isOpen) {
+    buildMedBrowseContent(panel, row, col);
+    panel.classList.add('open');
+  }
+}
+
+// keyboard navigation
+function onMedKey(event, row, col) {
+  const panel = document.getElementById(`med-drop-${row}-${col}`);
+  if (!panel.classList.contains('open')) return;
+  const items = panel.querySelectorAll('.med-option');
+  const current = panel.querySelector('.med-option.highlighted');
+  let idx = Array.from(items).indexOf(current);
+  if (event.key === 'ArrowDown') {
+    event.preventDefault();
+    if (current) current.classList.remove('highlighted');
+    idx = (idx + 1) % items.length;
+    items[idx].classList.add('highlighted');
+    items[idx].scrollIntoView({ block: 'nearest' });
+  } else if (event.key === 'ArrowUp') {
+    event.preventDefault();
+    if (current) current.classList.remove('highlighted');
+    idx = (idx - 1 + items.length) % items.length;
+    items[idx].classList.add('highlighted');
+    items[idx].scrollIntoView({ block: 'nearest' });
+  } else if (event.key === 'Enter') {
+    if (current) { event.preventDefault(); current.dispatchEvent(new MouseEvent('mousedown')); }
+  } else if (event.key === 'Escape') {
+    panel.classList.remove('open');
+  }
+}
+
+function selectMed(row, col, name, dose, freq) {
+  const suffix = col === 'b' ? '2' : '';
+  document.getElementById(`med${row}_name${suffix}`).value = name;
+  document.getElementById(`med${row}_dose${suffix}`).value = dose;
+  document.getElementById(`med${row}_freq${suffix}`).value = freq;
+  document.getElementById(`med-drop-${row}-${col}`).classList.remove('open');
+}
+
+function closeAllMedPanels(except) {
+  document.querySelectorAll('.med-dropdown-panel').forEach(p => {
+    if (p !== except) p.classList.remove('open');
+  });
+}
+
+// close on outside click
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.med-name-cell')) closeAllMedPanels();
+});
+
+buildMedRows();
+
 // ── Build Giladi rows ──
 const GILADI_TRIALS = [
   {name:'1. Walk', turns:false},
@@ -687,7 +944,6 @@ const GILADI_TRIALS = [
   {name:'7. Box Agility', turns:false},
   {name:'8. Doorway', turns:false}
 ];
-
 function buildGiladi(state) {
   const tbody = document.getElementById('giladi-'+state+'-body');
   GILADI_TRIALS.forEach((t,i) => {
@@ -707,21 +963,36 @@ function buildGiladi(state) {
 buildGiladi('off');
 buildGiladi('on');
 
-// ── Build VR trial rows ──
+// ── Build VR trial rows — with Baseline SAM + Post-Walk SAM ──
 function buildVR(state) {
   const container = document.getElementById('vr-'+state+'-container');
   let html = `<table class="vr-table">
-    <thead><tr><th style="width:36px">#</th><th>Trial Code</th><th>Condition</th><th style="width:80px">SAM</th><th>Elev/Ground & Time</th><th>Comments</th></tr></thead>
+    <thead>
+      <tr>
+        <th style="width:36px">#</th>
+        <th>Trial Code</th>
+        <th>Condition</th>
+        <th style="width:110px">SAM<br><span style="font-size:9px;opacity:0.75;font-weight:400;text-transform:none">Baseline / Post-Walk</span></th>
+        <th>Elev/Ground & Time</th>
+        <th>Comments</th>
+      </tr>
+    </thead>
     <tbody>
       <tr class="baseline-row">
         <td class="trial-num">B</td>
         <td><input type="text" id="vr_${state}_b_code" placeholder="Baseline"></td>
         <td><input type="text" id="vr_${state}_b_cond"></td>
-        <td><input type="text" id="vr_${state}_b_sam"></td>
+        <td>
+          <div class="sam-cell-pair">
+            <span class="sam-label-tiny">Baseline SAM</span>
+            <input type="text" id="vr_${state}_b_sam_base" placeholder="0–9">
+          </div>
+        </td>
         <td><input type="text" id="vr_${state}_b_elev"></td>
         <td><input type="text" id="vr_${state}_b_comments"></td>
       </tr>
       <tr class="vr-divider"><td colspan="6">— Trials 1–5 &nbsp; Elev/Ground time: <input type="time" id="vr_${state}_time_1" style="font-size:11px;border:1px solid var(--border);border-radius:3px;padding:2px 6px;font-family:var(--mono)"> —</td></tr>`;
+
   for (let i=1; i<=10; i++) {
     if (i===6) html += `<tr class="vr-divider"><td colspan="6">— Trials 6–10 &nbsp; Elev/Ground time: <input type="time" id="vr_${state}_time_2" style="font-size:11px;border:1px solid var(--border);border-radius:3px;padding:2px 6px;font-family:var(--mono)"> —</td></tr>`;
     html += `
@@ -729,7 +1000,14 @@ function buildVR(state) {
         <td class="trial-num">${i}</td>
         <td><input type="text" id="vr_${state}_${i}_code" placeholder="${i}: 30s stand"></td>
         <td><input type="text" id="vr_${state}_${i}_cond"></td>
-        <td><input type="text" id="vr_${state}_${i}_sam"></td>
+        <td>
+          <div class="sam-cell-pair">
+            <span class="sam-label-tiny">Baseline (stand)</span>
+            <input type="text" id="vr_${state}_${i}_sam_base" placeholder="0–9">
+            <span class="sam-label-tiny" style="margin-top:3px">Post-Walk</span>
+            <input type="text" id="vr_${state}_${i}_sam_post" placeholder="0–9">
+          </div>
+        </td>
         <td><input type="text" id="vr_${state}_${i}_elev"></td>
         <td><input type="text" id="vr_${state}_${i}_comments"></td>
       </tr>
@@ -790,7 +1068,6 @@ function v(id) {
 function exportCSV() {
   const rows=[['Field','Value']];
   const r=(label,val)=>rows.push(['"'+label+'"','"'+String(val).replace(/"/g,'""').replace(/\n/g,' ')+'"']);
-
   // Prep
   r('Participant ID',v('participant_id')); r('Test Session',v('test_session')); r('Visit DateTime',v('visit_datetime'));
   r('RC Initials',v('rc_initials')); r('Recruitment Date',v('recruitment_date')); r('Forms Reviewed Initials',v('forms_reviewed_initials'));
@@ -819,19 +1096,22 @@ function exportCSV() {
     r('Giladi OFF '+name+' Total',v('g_off_'+n+'_total')); r('Giladi OFF '+name+' Conf',v('g_off_'+n+'_conf')); r('Giladi OFF '+name+' Notes',v('g_off_'+n+'_notes'));
   });
   // VR OFF
+  r('VR OFF Pre STAI-State',v('vr_off_pre_stai')); r('VR OFF Pre SSQ',v('vr_off_pre_ssq'));
   r('VR OFF Baseline Sitting',v('vr_off_sitting')); r('VR OFF Baseline Standing',v('vr_off_standing')); r('VR OFF Baseline Walking',v('vr_off_walking'));
   r('VR OFF Time 1-5',v('vr_off_time_1')); r('VR OFF Time 6-10',v('vr_off_time_2'));
-  ['b','1','2','3','4','5','6','7','8','9','10'].forEach(t=>{
+  r('VR OFF Baseline SAM',v('vr_off_b_sam_base'));
+  ['1','2','3','4','5','6','7','8','9','10'].forEach(t=>{
     r('VR OFF Trial '+t+' Code',v('vr_off_'+t+'_code')); r('VR OFF Trial '+t+' Cond',v('vr_off_'+t+'_cond'));
-    r('VR OFF Trial '+t+' SAM',v('vr_off_'+t+'_sam')); r('VR OFF Trial '+t+' Elev',v('vr_off_'+t+'_elev')); r('VR OFF Trial '+t+' Comments',v('vr_off_'+t+'_comments'));
-    if(t!=='b') r('VR OFF Walk '+t+' Notes',v('vr_off_'+t+'_walk'));
+    r('VR OFF Trial '+t+' SAM Baseline',v('vr_off_'+t+'_sam_base'));
+    r('VR OFF Trial '+t+' SAM Post-Walk',v('vr_off_'+t+'_sam_post'));
+    r('VR OFF Trial '+t+' Elev',v('vr_off_'+t+'_elev')); r('VR OFF Trial '+t+' Comments',v('vr_off_'+t+'_comments'));
+    r('VR OFF Walk '+t+' Notes',v('vr_off_'+t+'_walk'));
   });
   // Med intake
   r('Med Intake Time',v('med_intake_time')); r('Med Inventory Confirmed',v('med_inventory_confirmed')); r('Q Completed By',v('q_completed_by')); r('Med Break Notes',v('med_notes'));
   // Test ON
   r('UPDRS-III Score ON',v('updrs_on_score')); r('UPDRS-III Time ON',v('updrs_on_time')); r('UPDRS-III Initials ON',v('updrs_on_initials'));
   r('MoCA Score ON',v('moca_on_score')); r('MoCA Time ON',v('moca_on_time')); r('TMT-A secs',v('tmta_on_time')); r('TMT-B secs',v('tmtb_on_time'));
-  r('Baseline ON Inside VR Sitting',v('vr_on_pre_sitting')); r('Baseline ON Inside VR Standing',v('vr_on_pre_standing')); r('Baseline ON Inside VR Walking',v('vr_on_pre_walking'));
   r('Baseline ON Outside Sitting',v('baseline_on_sitting')); r('Baseline ON Outside Standing',v('baseline_on_standing')); r('Baseline ON Outside Walking',v('baseline_on_walking'));
   r('BP ON R2 Sys',v('bp_on_2_sys')); r('BP ON R2 Dia',v('bp_on_2_dia')); r('BP ON R3 Sys',v('bp_on_3_sys')); r('BP ON R3 Dia',v('bp_on_3_dia'));
   r('BP ON Avg Sys',v('bp_on_avg_sys')); r('BP ON Avg Dia',v('bp_on_avg_dia'));
@@ -843,12 +1123,16 @@ function exportCSV() {
     r('Giladi ON '+name+' Total',v('g_on_'+n+'_total')); r('Giladi ON '+name+' Conf',v('g_on_'+n+'_conf')); r('Giladi ON '+name+' Notes',v('g_on_'+n+'_notes'));
   });
   // VR ON
+  r('VR ON Pre STAI-State',v('vr_on_pre_stai')); r('VR ON Pre SSQ',v('vr_on_pre_ssq'));
   r('VR ON Baseline Sitting',v('vr_on_sitting')); r('VR ON Baseline Standing',v('vr_on_standing')); r('VR ON Baseline Walking',v('vr_on_walking'));
   r('VR ON Time 1-5',v('vr_on_time_1')); r('VR ON Time 6-10',v('vr_on_time_2'));
-  ['b','1','2','3','4','5','6','7','8','9','10'].forEach(t=>{
+  r('VR ON Baseline SAM',v('vr_on_b_sam_base'));
+  ['1','2','3','4','5','6','7','8','9','10'].forEach(t=>{
     r('VR ON Trial '+t+' Code',v('vr_on_'+t+'_code')); r('VR ON Trial '+t+' Cond',v('vr_on_'+t+'_cond'));
-    r('VR ON Trial '+t+' SAM',v('vr_on_'+t+'_sam')); r('VR ON Trial '+t+' Elev',v('vr_on_'+t+'_elev')); r('VR ON Trial '+t+' Comments',v('vr_on_'+t+'_comments'));
-    if(t!=='b') r('VR ON Walk '+t+' Notes',v('vr_on_'+t+'_walk'));
+    r('VR ON Trial '+t+' SAM Baseline',v('vr_on_'+t+'_sam_base'));
+    r('VR ON Trial '+t+' SAM Post-Walk',v('vr_on_'+t+'_sam_post'));
+    r('VR ON Trial '+t+' Elev',v('vr_on_'+t+'_elev')); r('VR ON Trial '+t+' Comments',v('vr_on_'+t+'_comments'));
+    r('VR ON Walk '+t+' Notes',v('vr_on_'+t+'_walk'));
   });
   // Data mgmt
   r('File Name Convention',v('file_name_convention'));
@@ -857,7 +1141,6 @@ function exportCSV() {
   r('Upload Video Local',v('upload_video_local')); r('Upload Video Repo',v('upload_video_repo'));
   r('Upload Paper Local',v('upload_paper_local')); r('Upload Paper Repo',v('upload_paper_repo'));
   r('Video Blurring',v('video_blurring')); r('Session Notes',v('session_notes'));
-
   const pid=v('participant_id')||'session';
   const dt=new Date().toISOString().slice(0,10);
   const csv=rows.map(r=>r.join(',')).join('\n');
@@ -878,7 +1161,6 @@ function clearAll() {
   document.getElementById('header-info').textContent='New session — enter Participant ID to begin';
   showToast('Form cleared');
 }
-
 function showToast(msg) {
   const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show');
   setTimeout(()=>t.classList.remove('show'),3000);
